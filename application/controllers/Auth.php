@@ -10,7 +10,7 @@ class Auth extends CI_Controller
     public function index()
     {
         $data = [
-            'title' => 'LOGIN | DKP Provinsi Banten',
+            'title' => 'LOGIN',
         ];
 
         // $this->load->view('templates/header', $data);
