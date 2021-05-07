@@ -30,12 +30,12 @@ class Dashboard extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
         ];
 
-        // $this->load->view('templates/header', $data);
-        // $this->load->view('templates/navbar');
-        // $this->load->view('templates/sidebar');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('templates/sidebar');
         // $this->load->view('templates/topbar');
         $this->load->view('admin/dashboard/index', $data);
-        // $this->load->view('templates/footer');
+        $this->load->view('templates/footer');
     }
 
     public function edit_about($id)
