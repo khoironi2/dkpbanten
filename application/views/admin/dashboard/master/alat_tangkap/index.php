@@ -28,8 +28,8 @@
         <div class="card">
             <div class="card-header">
                 <a href="<?= base_url('master/alat_tangkap/add') ?>"><button type="button" class=" card-title btn btn-primary btn-flat mr-1">+ Tambah</button></a>
-
             </div>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -42,11 +42,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
+                        <?php $no = 1;
+                        foreach ($alat_tangkap as $data) : ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $data['nama_alat_tangkap_kapal'] ?></td>
+                                <td>
+                                    <?php if ($data['status'] == "1") { ?>
+                                        Aktif
+                                    <?php } elseif ($data['status'] == "0") { ?>
+                                        Tidak Aktif
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url('master/alat_tangkap/edit/' . $data['id_alat_tangkap_kapal']) ?>"><i class="fas fa-edit"></i></a>
+                                    <a data-toggle="modal" data-target="#delete<?= $data['id_alat_tangkap_kapal'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -71,3 +84,26 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- /#wrapper -->
+<?php foreach ($alat_tangkap as $data) : ?>
+    <div class="modal fade" id="delete<?= $data['id_alat_tangkap_kapal'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PERINGATAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="<?= base_url('master/alat_tangkap/delete/' . $data['id_alat_tangkap_kapal']) ?>">
+                    <div class="modal-body">
+                        <P style="color: darkred;">Apakah anda yakin ingin menghapus data <b><?= $data['nama_alat_tangkap_kapal'] ?></b></P>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                        <button type="submit" class="btn btn-primary">HAPUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>

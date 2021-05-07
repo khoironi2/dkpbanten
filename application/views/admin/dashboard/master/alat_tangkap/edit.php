@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah</h3>
+                    <h3 class="card-title">Perbarui</h3>
 
 
                 </div>
@@ -38,19 +38,26 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/alat_tangkap/save') ?>">
-                                        <input type="hidden" name="id" id="id" value="" />
-                                        <div class="form-group">
-                                            <label for="name">Nama <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="nama_alat_tangkap_kapal" id="nama_alat_tangkap_kapal" maxlength="255" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="status">Status <span class="mandatory">*</span></label>
-                                            <select name="status" id="status" class="form-control">
-                                                <option value="1" selected>Aktif</option>
-                                                <option value="0">Tidak Aktif</option>
-                                            </select>
-                                        </div>
+                                    <form method="post" action="<?= base_url('master/alat_tangkap/update') ?>">
+                                        <?php foreach ($edit_alat_tangkap as $data) : ?>
+                                            <div class="form-group">
+                                                <label for="name">Nama <span class="mandatory">*</span></label>
+                                                <input type="text" class="form-control" value="<?= $data['nama_alat_tangkap_kapal'] ?>" name="nama_alat_tangkap_kapal" id="nama_alat_tangkap_kapal" maxlength="255" required />
+                                                <input type="text" hidden class="form-control" value="<?= $data['id_alat_tangkap_kapal'] ?>" name="id_alat_tangkap_kapal" id="id_alat_tangkap_kapal" maxlength="255" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status">Status <span class="mandatory">*</span></label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <?php if ($data['status'] == "1") { ?>
+                                                        <option value="1">Aktif</option>
+                                                    <?php } elseif ($data['status'] == "0") { ?>
+                                                        <option value="0">Tidak Aktif</option>
+                                                    <?php } ?>
+                                                    <option value="1">Aktif</option>
+                                                    <option value="0">Tidak Aktif</option>
+                                                </select>
+                                            </div>
+                                        <?php endforeach ?>
                                 </div>
                             </div>
                         </div>

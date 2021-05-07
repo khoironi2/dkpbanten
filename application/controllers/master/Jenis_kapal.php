@@ -67,7 +67,7 @@ class Jenis_kapal extends CI_Controller
             'title' => 'JENIS KAPAL ',
             'parent' => 'Master ',
             'child' => 'Jenis Kapal ',
-            'newchild' => 'Tambah ',
+            'newchild' => 'Perbarui ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_kapal' => $this->Jenis_kapal_model->getAll(),
