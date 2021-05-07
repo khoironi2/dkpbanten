@@ -40,7 +40,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('login/logout') ?>" role="button">
+            <a class="nav-link" href="<?php echo base_url('auth/logout') ?>" role="button">
                 <i class="fas fa-sign-out-alt" title="Sign Out"></i>
             </a>
         </li>

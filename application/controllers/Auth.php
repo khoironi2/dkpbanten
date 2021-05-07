@@ -13,9 +13,9 @@ class Auth extends CI_Controller
             'title' => 'LOGIN | DKP Provinsi Banten',
         ];
 
-        // $this->load->view('templates/auth_header', $data);
+        // $this->load->view('templates/header', $data);
         $this->load->view('auth/index', $data);
-        // $this->load->view('templates/auth_footer');
+        // $this->load->view('templates/footer');
     }
 
     public function loginForm()
@@ -36,7 +36,7 @@ class Auth extends CI_Controller
             $cek_login = $this->Auth_model->cek_login($nik);
 
             if ($cek_login == FALSE) {
-                $this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;">NIK yang Anda masukan tidak terdaftar.</p>');
+                $this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;">username yang Anda masukan tidak terdaftar.</p>');
                 redirect('auth');
             } else {
 
@@ -54,7 +54,7 @@ class Auth extends CI_Controller
                     redirect('admin/dashboard');
                 } else {
 
-                    $this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;">NIK atau password yang Anda masukan salah.</p>');
+                    $this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;">username atau password yang Anda masukan salah.</p>');
                     redirect('auth');
                 }
             }
