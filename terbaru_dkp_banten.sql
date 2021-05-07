@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 07, 2021 at 11:04 PM
+-- Generation Time: May 07, 2021 at 11:43 PM
 -- Server version: 5.7.24-log
 -- PHP Version: 7.2.10
 
@@ -33,6 +33,16 @@ CREATE TABLE `tbl_alat_tangkap_kapal` (
   `nama_alat_tangkap_kapal` varchar(255) DEFAULT NULL,
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_alat_tangkap_kapal`
+--
+
+INSERT INTO `tbl_alat_tangkap_kapal` (`id_alat_tangkap_kapal`, `nama_alat_tangkap_kapal`, `status`) VALUES
+(1, 'cantrang / pukat harimau', '1'),
+(2, 'Cantrang', '1'),
+(3, 'Jaring', '1'),
+(4, 'Pancing Tonda', '1');
 
 -- --------------------------------------------------------
 
@@ -323,7 +333,7 @@ CREATE TABLE `tbl_pegawai` (
 --
 
 INSERT INTO `tbl_pegawai` (`id_pegawai`, `nik`, `password`, `nidn`, `nidk`, `nitk`, `nama`, `tgl_masuk`, `tgl_keluar`, `sk_1`, `masa_kerja_sk_1`, `sk_2`, `masa_kerja_sk_2`, `id_jabatan`, `no_hp`, `email`, `alamat`, `tempat_lahir`, `tgl_lahir`, `pendidikan_terakhir`, `program_studi`, `status`, `id_bidang`, `time_login_pegawai`, `time_logout_pegawai`, `time_create_pegawai`, `time_update_pegawai`, `kegiatan_yang_diikuti`, `gambar_pegawai`, `jenis_kelamin`, `nik_ktp`, `agama`, `kewarganegaraan`, `rt`, `rw`, `dusun`, `kelurahan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `telpon_rumah`, `nip_pns`, `status_kepegawaian`, `status_keaktifan`, `sk_cpns`, `tanggal_sk_cpns`, `lembaga_pengangkat`, `golongan`, `sumber_gaji`) VALUES
-(1, '7700015071', '$2y$10$WfdBJdKFOpteuengmVyQnuDBe7nutID8qcG.tDjxvV1o9KIk5Y2j.', NULL, NULL, NULL, 'Mega Santi Sekartaji, S.KM.', NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, 'megasekartaji94@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 6, '2021-05-07 23:03:28', '2021-05-07 23:03:31', '2021-04-20 10:43:05', NULL, NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, '7700015071', '$2y$10$WfdBJdKFOpteuengmVyQnuDBe7nutID8qcG.tDjxvV1o9KIk5Y2j.', NULL, NULL, NULL, 'Mega Santi Sekartaji, S.KM.', NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, 'megasekartaji94@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 6, '2021-05-07 23:07:47', '2021-05-07 23:03:31', '2021-04-20 10:43:05', NULL, NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, '6503616001', '$2y$10$oRMHJzLLZL5vDkhtLRK.euZEFIFTGTVESiyLDENpUdgjP8rKQ42mq', NULL, NULL, NULL, 'dr. H.Titis Wahyuono, M.Si.', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-04-27 10:32:44', NULL, '2021-04-22 19:18:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, '6503616002', '$2y$10$b45M2ZHRZVlHXid.uj77/eItPwAuTDJbnOzXlMHINtRyT9/CWpdlG', '0603027001', '', '', 'Budi Purwanto, S.Si, M.Si.', '2016-01-01', '0000-00-00', 'No. 05/Kep.YPMI/I/2016', '', '', '', 2, '085742327616', 'akubudi89@gmail.com', 'Gonowelang, RT 004 RW 002, Ngaru-aru, Banyudono, Boyolali', 'Magelang', '1970-02-03', 'S2 ', 'Sains', NULL, NULL, '2021-04-30 10:38:53', NULL, '2021-04-22 22:12:12', '2021-04-23 19:52:19', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '7700015076', '$2y$10$bO/.enyeGD12rhYRUVnIO.qkSkwn0eRcbPngowmZv/jwWlvzQVVMG', NULL, NULL, NULL, 'Edy Setiyawan, A.Md.', NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-04-30 10:39:26', NULL, '2021-04-30 10:34:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -577,7 +587,7 @@ ALTER TABLE `tbl_wpp`
 -- AUTO_INCREMENT for table `tbl_alat_tangkap_kapal`
 --
 ALTER TABLE `tbl_alat_tangkap_kapal`
-  MODIFY `id_alat_tangkap_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alat_tangkap_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_bendera_kapal`
