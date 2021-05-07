@@ -64,7 +64,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Namas</th>
+                            <th>Nama</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
