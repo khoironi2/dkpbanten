@@ -38,53 +38,52 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="http://103.41.205.125/kalbusmarttrial/perusahaan/add" enctype="multipart/form-data">
-                                        <input type="hidden" name="id" id="id" value="" />
-                                        <input type="hidden" name="siup_image" id="siup_image" value="" />
-                                        <input type="hidden" name="npwp_image" id="npwp_image" value="" />
+
+                                    <form action="<?= base_url('master/perusahaan/add'); ?>" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="name">Nama <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="name" id="name" value="" maxlength="255" autofocus />
+                                            <input type="text" class="form-control" name="nama" id="nama" maxlength="255" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="siupnum">No. SIUP <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="siupnum" id="siupnum" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="no_siup" id="no_siup" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="siupimage">Upload SIUP</label>
-                                            <input type="file" class="form-control" name="siupimage" id="siupimage" />
+                                            <input type="file" id="file_siup" name="file_siup" required>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="npwpnum">No. NPWP <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="npwpnum" id="npwpnum" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="no_npwp" id="no_npwp" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="npwpimage">Upload NPWP</label>
-                                            <input type="file" class="form-control" name="npwpimage" id="npwpimage" />
+                                            <input type="file" id="file_npwp" name="file_npwp" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Alamat</label>
-                                            <textarea class="form-control" name="address" id="address" rows="7"></textarea>
+                                            <textarea class="form-control" name="alamat" id="alamat" rows="7"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="phone">Nomor Telepon</label>
-                                            <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="50" />
+                                            <input type="text" class="form-control" name="no_telpon" id="no_telpon" required maxlength="50" />
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" name="email" id="email" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="email" id="email" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="picname">Nama PIC</label>
-                                            <input type="text" class="form-control" name="picname" id="picname" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="nama_pic" id="nama_pic" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="picphone">No Telepon PIC</label>
-                                            <input type="text" class="form-control" name="picphone" id="picphone" value="" maxlength="50" />
+                                            <input type="text" class="form-control" name="no_telpon_pic" id="no_telpon_pic" maxlength="50" />
                                         </div>
                                         <div class="form-group">
                                             <label for="picemail">Email PIC</label>
-                                            <input type="text" class="form-control" name="picemail" id="picemail" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="email_pic" id="email_pic" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
@@ -94,7 +93,6 @@
                                             </select>
                                         </div>
 
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -102,9 +100,10 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" name="submit" value="submit" class="btn btn-primary">SIMPAN</button>
+                    <button type="submit" class="btn btn-primary">SIMPAN</button>
                     <button type="button" class="btn btn-danger">BATAL</button>
                 </div>
+                </form>
             </div>
         </div>
         <!-- /.content-wrapper -->
