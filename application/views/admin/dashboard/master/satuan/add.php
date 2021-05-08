@@ -38,15 +38,15 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="http://103.41.205.125/kalbusmarttrial/satuan/add">
+                                    <form method="post" action="<?= base_url('master/satuan/save') ?>">
                                         <input type="hidden" name="id" id="id" value="" />
                                         <div class="form-group">
                                             <label for="name">Nama Satuan <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control select-with-select2" name="name" id="name" value="" />
+                                            <input type="text" class="form-control select-with-select2" name="nama_satuan" id="nama_satuan" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="unit">Satuan <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="unit" id="unit" value="" maxlength="255" />
+                                            <input type="text" class="form-control" name="satuan" id="satuan" required maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi <span class="mandatory">*</span></label>
@@ -59,8 +59,6 @@
                                                 <option value="0">Tidak Aktif</option>
                                             </select>
                                         </div>
-
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -74,6 +72,7 @@
                 <button type="submit" name="submit" value="submit" class="btn btn-primary">SIMPAN</button>
                 <button type="button" class="btn btn-danger">BATAL</button>
             </div>
+            </form>
         </div>
 </div>
 <!-- /.content-wrapper -->

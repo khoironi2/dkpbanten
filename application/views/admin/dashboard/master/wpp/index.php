@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('master/layanan/add') ?>"><button type="button" class=" card-title btn btn-primary btn-flat mr-1">+ Tambah</button></a>
+                <a href="<?= base_url('master/wpp/add') ?>"><button type="button" class=" card-title btn btn-primary btn-flat mr-1">+ Tambah</button></a>
             </div>
             <p><?php echo $this->session->flashdata('success'); ?></p>
             <!-- /.card-header -->
@@ -37,18 +37,16 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Deskripsi</th>
                             <th>Status</th>
-                            <th>Aksi</th>
+                            <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
-                        foreach ($layanan as $data) :  ?>
+                        foreach ($wpp as $data) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?= $data['nama'] ?></td>
-                                <td><?= $data['deskripsi'] ?></td>
+                                <td><?= $data['nama_wpp'] ?></td>
                                 <td>
                                     <?php if ($data['status'] == "1") { ?>
                                         Aktif
@@ -57,8 +55,8 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="<?= base_url('master/layanan/edit/' . $data['id_layanan']) ?>"><i class="fas fa-edit"></i></a>
-                                    <a data-toggle="modal" data-target="#delete<?= $data['id_layanan'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="<?= base_url('master/wpp/edit/' . $data['id_wpp']) ?>"><i class="fas fa-edit"></i></a>
+                                    <a data-toggle="modal" data-target="#delete<?= $data['id_wpp'] ?>"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -67,7 +65,6 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Deskripsi</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -87,9 +84,8 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- /#wrapper -->
-
-<?php foreach ($layanan as $data) : ?>
-    <div class="modal fade" id="delete<?= $data['id_layanan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($wpp as $data) : ?>
+    <div class="modal fade" id="delete<?= $data['id_wpp'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -98,9 +94,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="<?= base_url('master/layanan/delete/' . $data['id_layanan']) ?>">
+                <form method="POST" action="<?= base_url('master/wpp/delete/' . $data['id_wpp']) ?>">
                     <div class="modal-body">
-                        <P style="color: darkred;">Apakah anda yakin ingin menghapus data <b><?= $data['nama'] ?></b></P>
+                        <P style="color: darkred;">Apakah anda yakin ingin menghapus data <b><?= $data['nama_wpp'] ?></b></P>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>

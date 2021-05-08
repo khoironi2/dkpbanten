@@ -38,62 +38,36 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="http://103.41.205.125/kalbusmarttrial/jenis-layanan/add">
-                                        <input type="hidden" name="id" id="id" value="" />
+                                    <form method="post" action="<?= base_url('master/jenis_layanan/save')  ?>">
                                         <div class="form-group">
                                             <label for="category">Layanan <span class="mandatory">*</span></label>
-                                            <select name="category" id="category" class="form-control">
-                                                <option value="1">Pelayanan Wisata Bahari</option>
-                                                <option value="2">Penyewaan Peralatan/Kendaraan</option>
-                                                <option value="5">Pelayanan Pemakaian Gedung</option>
-                                                <option value="6">Pelayanan Sewa Lahan</option>
-                                                <option value="7">Pelayanan Sewa Bangunan</option>
-                                                <option value="8">Pemakaian Slipway Docking</option>
-                                                <option value="9">Pelayanan Air Bersih</option>
-                                                <option value="10">Layanan Jasa Tambat Labuh Kapal Perikanan</option>
-                                                <option value="13">Pelayanan Pas Masuk</option>
-                                                <option value="14">Pendapatan Lain-lain yang sah</option>
+                                            <select name="id_layanan" id="id_layanan" class="form-control">
+                                                <option value=""></option>
+                                                <?php foreach ($layanan as $data) : ?>
+                                                    <option value="<?= $data['id_layanan'] ?>"><?= $data['nama'] ?></option>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Jenis Layanan <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="name" id="name" value="" maxlength="255" autofocus />
+                                            <input type="text" class="form-control" name="nama_jenis_layanan" id="nama_jenis_layanan" maxlength="255" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="type">Satuan <span class="mandatory">*</span></label>
-                                            <select name="type" id="type" class="form-control">
-                                                <option value="33">per tahun</option>
-                                                <option value="34">per hari</option>
-                                                <option value="35">per m2 per tahun</option>
-                                                <option value="36">per m2 per hari</option>
-                                                <option value="37">per jam</option>
-                                                <option value="38">per sekali pakai</option>
-                                                <option value="39">per unit per hari</option>
-                                                <option value="40">per lembar</option>
-                                                <option value="41">per tabung</option>
-                                                <option value="42">per orang</option>
-                                                <option value="43">per 8 jam</option>
-                                                <option value="44">per 10 jam</option>
-                                                <option value="45">per kamar</option>
-                                                <option value="46">per bulan</option>
-                                                <option value="47">per 10 hari</option>
-                                                <option value="48">per pekerjaan</option>
-                                                <option value="49">per GT per hari</option>
-                                                <option value="50">Meter Kubik</option>
-                                                <option value="51">etmal</option>
-                                                <option value="52">per meter panjang kapal per hari</option>
-                                                <option value="53">per sekali bongkar</option>
-                                                <option value="54">per kendaraan</option>
-                                                <option value="55">per sekali masuk</option>
+                                            <select name="id_satuan" id="id_satuan" class="form-control">
+                                                <option value=""></option>
+                                                <?php foreach ($satuan as $data) : ?>
+                                                    <option value="<?= $data['id_satuan'] ?>"><?= $data['nama_satuan'] ?></option>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Deskripsi</label>
-                                            <textarea class="form-control" name="description" id="description" rows="7"></textarea>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="7"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Harga <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control dotseparator" name="price" id="prices" value="" maxlength="15" />
+                                            <input type="text" class="form-control dotseparator" name="harga" id="harga" required maxlength="15" />
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
@@ -103,7 +77,6 @@
                                             </select>
                                         </div>
 
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +90,7 @@
                 <button type="submit" name="submit" value="submit" class="btn btn-primary">SIMPAN</button>
                 <button type="button" class="btn btn-danger">BATAL</button>
             </div>
+            </form>
         </div>
 </div>
 <!-- /.content-wrapper -->

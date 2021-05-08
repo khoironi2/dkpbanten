@@ -1,9 +1,6 @@
    <!-- end header -->
 
    <!-- menu -->
-
-
-
    <!-- Main Sidebar Container -->
    <aside class="main-sidebar sidebar-dark-info  elevation-4">
        <!-- Brand Logo -->
@@ -53,9 +50,33 @@
                                </a>
                            </li>
                            <li class="nav-item">
+                               <a href="<?= base_url('master/tipe_kapal') ?>" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Tipe Kapal</p>
+                               </a>
+                           </li>
+                           <li class="nav-item">
                                <a href="<?= base_url('master/jenis_kapal') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Jenis Kapal</p>
+                               </a>
+                           </li>
+                           <li class="nav-item">
+                               <a href="<?= base_url('master/bendera_kapal') ?>" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Bendera Kapal</p>
+                               </a>
+                           </li>
+                           <li class="nav-item">
+                               <a href="<?= base_url('master/provinsi') ?>" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Provinsi</p>
+                               </a>
+                           </li>
+                           <li class="nav-item">
+                               <a href="<?= base_url('master/wpp') ?>" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>WPP</p>
                                </a>
                            </li>
                            <li class="nav-item">
