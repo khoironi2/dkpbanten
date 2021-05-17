@@ -28,6 +28,7 @@ class Pengguna_jasa extends CI_Controller
             'child' => 'Pengguna Jasa',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
         ];
 
         $this->load->view('templates/header', $data);
@@ -47,6 +48,7 @@ class Pengguna_jasa extends CI_Controller
             'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
         ];
 
         $this->form_validation->set_rules('nama', 'nama', 'required');
@@ -72,21 +74,16 @@ class Pengguna_jasa extends CI_Controller
                 'status' => $this->input->post('status'),
             ];
 
-            $upload_image = $_FILES['file_siup']['name'];
-            $upload_image = $_FILES['file_npwp']['name'];
+            $upload_image = $_FILES['file_ktp']['name'];
             if ($upload_image) {
                 $config['allowed_types'] = 'jpg|png|jpeg|pdf|doc|docx|csv';
                 $config['upload_path'] = './assets/master/pengguna_jasa/upload/';
 
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('file_siup')) {
+                if ($this->upload->do_upload('file_ktp')) {
                     $new_image = $this->upload->data('file_name');
-                    $this->db->set('file_siup', $new_image);
-                }
-                if ($this->upload->do_upload('file_npwp')) {
-                    $new_image = $this->upload->data('file_name');
-                    $this->db->set('file_npwp', $new_image);
+                    $this->db->set('file_ktp', $new_image);
                 } else {
                     echo $this->upload->display_errors();
                 }
@@ -94,7 +91,7 @@ class Pengguna_jasa extends CI_Controller
 
             $this->db->insert('tbl_perusahaan', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Dokumentasi Berhasil Ditambahkan</div>');
-            redirect('master/perusahaan');
+            redirect('master/pengguna_jasa');
         }
     }
 

@@ -185,12 +185,12 @@ class Kapal extends CI_Controller
             'siup' => $this->db->get_where('tbl_kapal', ['id_kapal' => $id])->row_array(),
         ];
         $old_siup = $data['siup']['file_siup'];
-        // $old_sikpi = $data['siup']['file_sikpi'];
-        // $old_sipi = $data['siup']['file_sipi'];
-        // $old_sipi_andon = $data['siup']['file_sipi_andon'];
-        // $old_surat_kelayakan = $data['siup']['file_surat_kelayakan'];
-        // $old_pas_kecil_pas_besar_surat_laut = $data['siup']['file_pas_kecil_pas_besar_surat_laut'];
-        // $old_surat_ukur_kapal = $data['siup']['file_surat_ukur_kapal'];
+        $old_sikpi = $data['siup']['file_sikpi'];
+        $old_sipi = $data['siup']['file_sipi'];
+        $old_sipi_andon = $data['siup']['file_sipi_andon'];
+        $old_surat_kelayakan = $data['siup']['file_surat_kelayakan'];
+        $old_pas_kecil_pas_besar_surat_laut = $data['siup']['file_pas_kecil_pas_besar_surat_laut'];
+        $old_surat_ukur_kapal = $data['siup']['file_surat_ukur_kapal'];
         $old_gross_akte_kapal = $data['siup']['file_gross_akte_kapal'];
 
         $this->form_validation->set_rules('nama_kapal', 'nama_kapal', 'required');
@@ -242,12 +242,12 @@ class Kapal extends CI_Controller
             ];
 
             $upload_image = $_FILES['file_siup']['name'];
-            // $upload_image = $_FILES['file_sikpi']['name'];
-            // $upload_image = $_FILES['file_sipi']['name'];
-            // $upload_image = $_FILES['file_sipi_andon']['name'];
-            // $upload_image = $_FILES['file_surat_kelayakan']['name'];
-            // $upload_image = $_FILES['file_pas_kecil_pas_besar_surat_laut']['name'];
-            // $upload_image = $_FILES['file_surat_ukur_kapal']['name'];
+            $upload_image = $_FILES['file_sikpi']['name'];
+            $upload_image = $_FILES['file_sipi']['name'];
+            $upload_image = $_FILES['file_sipi_andon']['name'];
+            $upload_image = $_FILES['file_surat_kelayakan']['name'];
+            $upload_image = $_FILES['file_pas_kecil_pas_besar_surat_laut']['name'];
+            $upload_image = $_FILES['file_surat_ukur_kapal']['name'];
             $upload_image = $_FILES['file_gross_akte_kapal']['name'];
 
             if ($upload_image) {
@@ -263,48 +263,48 @@ class Kapal extends CI_Controller
                     $new_siup = $this->upload->data('file_name');
                     $this->db->set('file_siup', $new_siup);
                 }
-                // if ($this->upload->do_upload('file_sikpi')) {
-                //     if ($old_sikpi != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sikpi);
-                //     }
-                //     $new_sikpi = $this->upload->data('file_name');
-                //     $this->db->set('file_sikpi', $new_sikpi);
-                // }
-                // if ($this->upload->do_upload('file_sipi')) {
-                //     if ($old_sipi != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sipi);
-                //     }
-                //     $new_sipi = $this->upload->data('file_name');
-                //     $this->db->set('file_sipi', $new_sipi);
-                // }
-                // if ($this->upload->do_upload('file_sipi_andon')) {
-                //     if ($old_sipi_andon != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sipi_andon);
-                //     }
-                //     $new_andon = $this->upload->data('file_name');
-                //     $this->db->set('file_sipi_andon', $new_andon);
-                // }
-                // if ($this->upload->do_upload('file_surat_kelayakan')) {
-                //     if ($old_surat_kelayakan != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_surat_kelayakan);
-                //     }
-                //     $new_kelayakan = $this->upload->data('file_name');
-                //     $this->db->set('file_surat_kelayakan', $new_kelayakan);
-                // }
-                // if ($this->upload->do_upload('file_pas_kecil_pas_besar_surat_laut')) {
-                //     if ($old_pas_kecil_pas_besar_surat_laut != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_pas_kecil_pas_besar_surat_laut);
-                //     }
-                //     $new_pas = $this->upload->data('file_name');
-                //     $this->db->set('file_pas_kecil_pas_besar_surat_laut', $new_pas);
-                // }
-                // if ($this->upload->do_upload('file_surat_ukur_kapal')) {
-                //     if ($old_surat_ukur_kapal != 'default-user-image.jpg') {
-                //         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_surat_ukur_kapal);
-                //     }
-                //     $new_ukur = $this->upload->data('file_name');
-                //     $this->db->set('file_surat_ukur_kapal', $new_ukur);
-                // }
+                if ($this->upload->do_upload('file_sikpi')) {
+                    if ($old_sikpi != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sikpi);
+                    }
+                    $new_sikpi = $this->upload->data('file_name');
+                    $this->db->set('file_sikpi', $new_sikpi);
+                }
+                if ($this->upload->do_upload('file_sipi')) {
+                    if ($old_sipi != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sipi);
+                    }
+                    $new_sipi = $this->upload->data('file_name');
+                    $this->db->set('file_sipi', $new_sipi);
+                }
+                if ($this->upload->do_upload('file_sipi_andon')) {
+                    if ($old_sipi_andon != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_sipi_andon);
+                    }
+                    $new_andon = $this->upload->data('file_name');
+                    $this->db->set('file_sipi_andon', $new_andon);
+                }
+                if ($this->upload->do_upload('file_surat_kelayakan')) {
+                    if ($old_surat_kelayakan != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_surat_kelayakan);
+                    }
+                    $new_kelayakan = $this->upload->data('file_name');
+                    $this->db->set('file_surat_kelayakan', $new_kelayakan);
+                }
+                if ($this->upload->do_upload('file_pas_kecil_pas_besar_surat_laut')) {
+                    if ($old_pas_kecil_pas_besar_surat_laut != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_pas_kecil_pas_besar_surat_laut);
+                    }
+                    $new_pas = $this->upload->data('file_name');
+                    $this->db->set('file_pas_kecil_pas_besar_surat_laut', $new_pas);
+                }
+                if ($this->upload->do_upload('file_surat_ukur_kapal')) {
+                    if ($old_surat_ukur_kapal != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/kapal/upload/' . $old_surat_ukur_kapal);
+                    }
+                    $new_ukur = $this->upload->data('file_name');
+                    $this->db->set('file_surat_ukur_kapal', $new_ukur);
+                }
                 if ($this->upload->do_upload('file_gross_akte_kapal')) {
                     if ($old_gross_akte_kapal != 'default-user-image.jpg') {
                         unlink(FCPATH . 'assets/master/kapal/upload/' . $old_gross_akte_kapal);

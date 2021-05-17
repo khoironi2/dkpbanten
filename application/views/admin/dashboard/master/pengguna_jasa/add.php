@@ -79,9 +79,10 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jabatan">Status Pengguna Jasa <span class="mandatory">*</span></label>
-                                                    <select name="jabatan" id="jabatan" class="form-control">
-                                                        <option value=""></option>
-                                                        <option value="1">Nelayan Andon (Nahkoda)</option>
+                                                    <select name="id_jabatan_karyawan" id="id_jabatan_karyawan" class="form-control" required>
+                                                        <?php foreach ($jabatan_karyawan as $data) : ?>
+                                                            <option value="<?= $data['id_jabatan_karyawan'] ?>"><?= $data['status_pengguna_jasa'] ?></option>
+                                                        <?php endforeach ?>
                                                     </select>
                                                 </div>
                                                 <div class="row">
@@ -124,7 +125,6 @@
                                             </div>
                                         </div>
 
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -136,6 +136,7 @@
                     <button type="button" class="btn btn-danger">BATAL</button>
                 </div>
             </div>
+            </form>
         </div>
         <!-- /.content-wrapper -->
 
