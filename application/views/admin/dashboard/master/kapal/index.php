@@ -112,3 +112,27 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- /#wrapper -->
+
+<?php foreach ($kapal as $data) : ?>
+    <div class="modal fade" id="delete<?= $data['id_kapal'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PERINGATAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="<?= base_url('master/kapal/delete/' . $data['id_kapal']) ?>">
+                    <div class="modal-body">
+                        <P style="color: darkred;">Apakah anda yakin ingin menghapus data <b><?= $data['nama_kapal'] ?></b></P>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                        <button type="submit" class="btn btn-primary">HAPUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
