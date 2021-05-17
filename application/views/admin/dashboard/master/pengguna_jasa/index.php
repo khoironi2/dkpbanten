@@ -30,6 +30,7 @@
                 <a href="<?= base_url('master/pengguna_jasa/add') ?>"><button type="button" class=" card-title btn btn-primary btn-flat mr-1">+ Tambah</button></a>
 
             </div>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -47,17 +48,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                        </tr>
+                        <?php $no = 0;
+                        foreach ($pengguna_jasa as $data) : ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td>
+                                    <div class="p-3 mb-2 bg-danger text-white"></div>
+                                </td>
+                                <td><?= $data['nama'] ?></td>
+                                <td><?= $data['no_telpon'] ?></td>
+                                <td><?= $data['email'] ?></td>
+                                <td><?= $data['nomor_kartu'] ?></td>
+                                <td><?= $data['status_pengguna_jasa'] ?></td>
+                                <td>
+                                    <?php if ($data['status_di_pengguna_jasa'] == "1") { ?>
+                                        Aktif
+                                    <?php } elseif ($data['status_di_pengguna_jasa'] == "0") { ?>
+                                        Tidak Aktif
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url('master/pengguna_jasa/edit/' . $data['id_pengguna_jasa']) ?>"><i class="fas fa-edit"></i></a>
+                                    <a data-toggle="modal" data-target="#delete<?= $data['id_pengguna_jasa'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -87,3 +102,26 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- /#wrapper -->
+<?php foreach ($pengguna_jasa as $data) : ?>
+    <div class="modal fade" id="delete<?= $data['id_pengguna_jasa'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PERINGATAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="<?= base_url('master/pengguna_jasa/delete/' . $data['id_pengguna_jasa']) ?>">
+                    <div class="modal-body">
+                        <P style="color: darkred;">Apakah anda yakin ingin menghapus data <b><?= $data['nama'] ?></b></P>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                        <button type="submit" class="btn btn-primary">HAPUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
