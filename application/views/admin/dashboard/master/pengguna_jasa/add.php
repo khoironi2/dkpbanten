@@ -45,83 +45,62 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="name">Nama <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="name" id="name" value="" maxlength="255" autofocus />
+                                                    <input type="text" class="form-control" name="nama" id="nama" maxlength="255" required />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nik">NIK KTP <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="nik" id="nik" value="" maxlength="255" />
+                                                    <input type="text" class="form-control" name="nik_ktp" id="nik_ktp" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="image">Upload KTP</label>
-                                                    <input type="file" class="form-control" name="image" id="image" />
+                                                    <input type="file" class="form-control" name="file_ktp" id="file_ktp" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="placeofbirth">Tempat Lahir <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="placeofbirth" id="placeofbirth" value="" maxlength="255" />
+                                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="birthdate">Tanggal Lahir <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control date" name="birthdate" id="birthdate" value="" maxlength="10" readonly />
+                                                    <input type="text" class="form-control date" name="tanggal_lahir" id="tanggal_lahir" maxlength="10" readonly />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="address">Alamat</label>
-                                                    <textarea class="form-control" name="address" id="address" rows="7"></textarea>
+                                                    <textarea class="form-control" name="alamat" id="alamat" rows="7"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="phone">Nomor Telepon</label>
-                                                    <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="50" />
+                                                    <input type="text" class="form-control" name="no_telpon" id="no_telpon" maxlength="50" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="text" class="form-control" name="email" id="email" value="" maxlength="255" />
+                                                    <input type="text" class="form-control" name="email" id="email" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jabatan">Status Pengguna Jasa <span class="mandatory">*</span></label>
                                                     <select name="jabatan" id="jabatan" class="form-control">
                                                         <option value=""></option>
                                                         <option value="1">Nelayan Andon (Nahkoda)</option>
-                                                        <option value="2">Bakul</option>
-                                                        <option value="10">Pengawas PSDKP</option>
-                                                        <option value="11">Anggota POKMASWAS</option>
-                                                        <option value="12">Pengurus HNSI</option>
-                                                        <option value="13">Pengelola TPI</option>
-                                                        <option value="14">Pengelola SPDN</option>
-                                                        <option value="15">BPR JATIM</option>
-                                                        <option value="16">Pemilik kapal</option>
-                                                        <option value="17">Nahkoda</option>
-                                                        <option value="18">Pemancing</option>
-                                                        <option value="19">Pemilik KIOS</option>
-                                                        <option value="20">Pekerja KIOS</option>
-                                                        <option value="21">Pekerja Bongkar Muat</option>
-                                                        <option value="22">Pengurus Kapal</option>
-                                                        <option value="23">Penguras Kapal</option>
-                                                        <option value="24">Pengurus Gudang</option>
-                                                        <option value="25">Pemanol</option>
-                                                        <option value="26">Nelayan Lokal (Pemilik Kapal)</option>
-                                                        <option value="28">Supir</option>
-                                                        <option value="31">Nelayan Lokal (ABK)</option>
-                                                        <option value="32">Nelayan Andon (ABK)</option>
                                                     </select>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="pasmasuk">Pas Masuk <span class="mandatory">*</span></label>
-                                                            <input type="text" name="pasmasuk" id="pasmasuk" class="form-control datestart" value="" maxlength="10" readonly />
+                                                            <input type="text" name="pas_masuk" id="pas_masuk" class="form-control datestart" maxlength="10" readonly />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="paskeluar">Pas Keluar <span class="mandatory">*</span></label>
-                                                            <input type="text" name="paskeluar" id="paskeluar" class="form-control dateend" value="" maxlength="10" readonly />
+                                                            <input type="text" name="pas_keluar" id="pas_keluar" class="form-control dateend" value="" maxlength="10" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="cardnum">Nomor Kartu <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="cardnum" id="cardnum" value="" maxlength="255" />
+                                                    <input type="text" class="form-control" name="nomor_kartu" id="nomor_kartu" value="" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pin">PIN <span class="mandatory">*</span></label>
@@ -129,11 +108,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tanggalkartu">Tanggal Kartu<span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control datestart" name="tanggalkartu" id="tanggalkartu" maxlength="10" readonly value="" />
+                                                    <input type="text" class="form-control datestart" name="tgl_kartu" id="tgl_kartu" maxlength="10" readonly value="" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tanggalkartuakhir">Tanggal Akhir Kartu<span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control dateend" name="tanggalkartuakhir" id="tanggalkartuakhir" maxlength="10" readonly value="" />
+                                                    <input type="text" class="form-control dateend" name="tgl_akhir_kartu" id="tgl_akhir_kartu" maxlength="10" readonly value="" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status">Status <span class="mandatory">*</span></label>

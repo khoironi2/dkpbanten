@@ -40,7 +40,6 @@ class Pengguna_jasa extends CI_Controller
 
     public function add()
     {
-
         $data = [
             'title' => 'PENGGUNA JASA',
             'parent' => 'Master ',
@@ -50,12 +49,53 @@ class Pengguna_jasa extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
         ];
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar', $data);
-        $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
-        $this->load->view('admin/dashboard/master/pengguna_jasa/add', $data);
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar', $data);
+            $this->load->view('templates/sidebar');
+            // $this->load->view('templates/topbar');
+            $this->load->view('admin/dashboard/master/pengguna_jasa/add', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'nama' => $this->input->post('nama'),
+                'no_siup' => $this->input->post('no_siup'),
+                'no_npwp' => $this->input->post('no_npwp'),
+                'alamat' => $this->input->post('alamat'),
+                'no_telpon' => $this->input->post('no_telpon'),
+                'email' => $this->input->post('email'),
+                'nama_pic' => $this->input->post('nama_pic'),
+                'no_telpon_pic' => $this->input->post('no_telpon_pic'),
+                'email_pic' => $this->input->post('email_pic'),
+                'status' => $this->input->post('status'),
+            ];
+
+            $upload_image = $_FILES['file_siup']['name'];
+            $upload_image = $_FILES['file_npwp']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'jpg|png|jpeg|pdf|doc|docx|csv';
+                $config['upload_path'] = './assets/master/pengguna_jasa/upload/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_siup')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('file_siup', $new_image);
+                }
+                if ($this->upload->do_upload('file_npwp')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('file_npwp', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            $this->db->insert('tbl_perusahaan', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Dokumentasi Berhasil Ditambahkan</div>');
+            redirect('master/perusahaan');
+        }
     }
 
     public function adt()

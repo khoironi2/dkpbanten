@@ -38,19 +38,25 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/jabatan/save') ?>">
+                                    <form method="post" action="<?= base_url('master/jabatan/update') ?>">
                                         <div class="form-group">
                                             <label for="code">Kode <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="kode" id="kode" maxlength="11" required />
+                                            <input type="text" class="form-control" name="kode" id="kode" value="<?= $edit_jabatan['kode'] ?>" maxlength="11" required />
+                                            <input type="text" class="form-control" hidden name="id_jabatan_karyawan" id="id_jabatan_karyawan" value="<?= $edit_jabatan['id_jabatan_karyawan'] ?>" maxlength="11" required />
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Nama <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="status_pengguna_jasa" id="status_pengguna_jasa" maxlength="255" />
+                                            <input type="text" class="form-control" name="status_pengguna_jasa" id="status_pengguna_jasa" value="<?= $edit_jabatan['status_pengguna_jasa'] ?>" maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
                                             <select name="status" id="status" class="form-control">
-                                                <option value="1" selected>Aktif</option>
+                                                <?php if ($edit_jabatan['status'] == "1") { ?>
+                                                    <option value="1">Aktif</option>
+                                                <?php } elseif ($edit_jabatan['status'] == "0") { ?>
+                                                    <option value="0">Tidak Aktif</option>
+                                                <?php } ?>
+                                                <option value="1">Aktif</option>
                                                 <option value="0">Tidak Aktif</option>
                                             </select>
                                         </div>
