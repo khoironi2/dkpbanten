@@ -30,6 +30,7 @@
                 <a href="<?= base_url('master/kapal/add') ?>"><button type="button" class=" card-title btn btn-primary btn-flat mr-1">+ Tambah</button></a>
 
             </div>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -53,23 +54,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                            <td>Other browsers</td>
-                        </tr>
+                        <?php $no = 1;
+                        foreach ($kapal as $data) : ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $data['status_sipi'] ?></td>
+                                <td><?= $data['nama_kapal'] ?></td>
+                                <td><?= $data['nama_jenis_kapal'] ?></td>
+                                <td><?= $data['gt'] ?></td>
+                                <td><?= $data['sipi'] ?></td>
+                                <td><?= $data['tanggal_sipi'] ?></td>
+                                <td><?= $data['tanggal_akhir_sipi'] ?></td>
+                                <td><?= $data['nama_alat_tangkap_kapal'] ?></td>
+                                <td><?= $data['panjang_kapal'] ?></td>
+                                <td><?= $data['tanda_selar'] ?></td>
+                                <td><?= $data['gross_akte_kapal'] ?></td>
+                                <td><?= $data['nama'] ?></td>
+                                <td><?= $data['siup'] ?></td>
+                                <td>
+                                    <a href="<?= base_url('master/kapal/edit/' . $data['id_kapal']) ?>"><i class="fas fa-edit"></i></a>
+                                    <a data-toggle="modal" data-target="#delete<?= $data['id_kapal'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                     <tfoot>
                         <tr>

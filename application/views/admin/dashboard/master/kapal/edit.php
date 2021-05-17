@@ -27,8 +27,6 @@
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="card-title">Tambah</h3>
-
-
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -38,17 +36,19 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/kapal/add') ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?= base_url('master/kapal/edit/' . $edit_kapal['id_kapal']) ?>" enctype="multipart/form-data">
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="name">Nama Kapal <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="nama_kapal" id="nama_kapal" maxlength="255" required />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['nama_kapal'] ?>" name="nama_kapal" id="nama_kapal" maxlength="255" required />
+                                                    <input type="text" hidden class="form-control" value="<?= $edit_kapal['id_kapal'] ?>" name="id_kapal" id="id_kapal" maxlength="255" required />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tipekapal">Tipe Kapal <span class="mandatory">*</span></label><br />
                                                     <select class="form-control select2" name="id_tipe_kapal" id="id_tipe_kapal" style="width: 100%;">
+                                                        <option value="<?= $edit_kapal['id_tipe_kapal'] ?>"><?= $edit_kapal['nama_tipe_kapal'] ?></option>
                                                         <?php foreach ($tipe_kapal as $data) : ?>
                                                             <option value="<?= $data['id_tipe_kapal'] ?>"><?= $data['nama_tipe_kapal'] ?></option>
                                                         <?php endforeach ?>
@@ -57,6 +57,7 @@
                                                 <div class="form-group">
                                                     <label for="jeniskapal">Jenis Kapal <span class="mandatory">*</span></label><br />
                                                     <select class="form-control select2" name="id_jenis_kapal" id="id_jenis_kapal" style="width: 100%;">
+                                                        <option value="<?= $edit_kapal['id_jenis_kapal'] ?>"><?= $edit_kapal['nama_jenis_kapal'] ?></option>
                                                         <?php foreach ($jenis_kapal as $data) : ?>
                                                             <option value="<?= $data['id_jenis_kapal'] ?>"><?= $data['nama_jenis_kapal'] ?></option>
                                                         <?php endforeach ?>
@@ -65,6 +66,7 @@
                                                 <div class="form-group">
                                                     <label for="nationality">Bendera Kebangsaan <span class="mandatory">*</span></label>
                                                     <select class="form-control select2" name="id_bendera_kapal" id="id_bendera_kapal" style="width: 100%;">
+                                                        <option value="<?= $edit_kapal['id_bendera_kapal'] ?>"><?= $edit_kapal['nama_bendera_kapal'] ?></option>
                                                         <?php foreach ($bendera_kapal as $data) : ?>
                                                             <option value="<?= $data['id_bendera_kapal'] ?>"><?= $data['nama_bendera_kapal'] ?></option>
                                                         <?php endforeach ?>
@@ -72,61 +74,62 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pemilik">Pemilik <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="pemilik" id="pemilik" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['pemilik'] ?>" name="pemilik" id="pemilik" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nahkoda">Nahkoda <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="nahkoda" id="nahkoda" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['nahkoda'] ?>" name="nahkoda" id="nahkoda" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jumlahabk">Jumlah ABK <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control dotseparator" name="jumlah_abk" id="jumlah_abk" maxlength="15" />
+                                                    <input type="text" class="form-control dotseparator" value="<?= $edit_kapal['jumlah_abk'] ?>" name="jumlah_abk" id="jumlah_abk" maxlength="15" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="merk">Merk Mesin Utama / No. Mesin <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="merk_mesin_utama" id="merk_mesin_utama" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['merk_mesin_utama'] ?>" name="merk_mesin_utama" id="merk_mesin_utama" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="merktambahan">Merk Mesin Tambahan / No. Mesin <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="merk_mesin_tambahan" id="merk_mesin_tambahan" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['merk_mesin_tambahan'] ?>" name="merk_mesin_tambahan" id="merk_mesin_tambahan" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pshp">PK / PS / HP <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control dotseparator" name="pk_ps_hp" id="pk_ps_hp" maxlength="15" />
+                                                    <input type="text" class="form-control dotseparator" value="<?= $edit_kapal['pk_ps_hp'] ?>" name="pk_ps_hp" id="pk_ps_hp" maxlength="15" />
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="gt">GT <span class="mandatory">*</span></label>
-                                                            <input type="text" class="form-control dotseparatorwithcomma" name="gt" id="gt" value="" maxlength="15" />
+                                                            <input type="text" class="form-control dotseparatorwithcomma" value="<?= $edit_kapal['gt'] ?>" name="gt" id="gt" value="" maxlength="15" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="panjang">Panjang Kapal <span class="mandatory">*</span></label>
-                                                            <input type="text" class="form-control dotseparatorwithcomma" name="panjang_kapal" id="panjang_kapal" maxlength="15" />
+                                                            <input type="text" class="form-control dotseparatorwithcomma" value="<?= $edit_kapal['panjang_kapal'] ?>" name="panjang_kapal" id="panjang_kapal" maxlength="15" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="lebar">Lebar Kapal <span class="mandatory">*</span></label>
-                                                            <input type="text" class="form-control dotseparatorwithcomma" name="lebar_kapal" id="lebar_kapal" maxlength="15" />
+                                                            <input type="text" class="form-control dotseparatorwithcomma" value="<?= $edit_kapal['lebar_kapal'] ?>" name="lebar_kapal" id="lebar_kapal" maxlength="15" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="draft">Draft Kapal <span class="mandatory">*</span></label>
-                                                            <input type="text" class="form-control dotseparatorwithcomma" name="draft_kapal" id="draft_kapal" maxlength="15" />
+                                                            <input type="text" class="form-control dotseparatorwithcomma" value="<?= $edit_kapal['draft_kapal'] ?>" name="draft_kapal" id="draft_kapal" maxlength="15" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tandaselar">Tanda Selar <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="tanda_selar" id="tanda_selar" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['tanda_selar'] ?>" name="tanda_selar" id="tanda_selar" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alattangkap">Alat Tangkap <span class="mandatory">*</span></label><br />
                                                     <select class="form-control select-with-select2" name="id_alat_tangkap_kapal" id="id_alat_tangkap_kapal">
+                                                        <option value="<?= $edit_kapal['id_alat_tangkap_kapal'] ?>"><?= $edit_kapal['nama_alat_tangkap_kapal'] ?></option>
                                                         <?php foreach ($alat_tangkap as $data) : ?>
                                                             <option value="<?= $data['id_alat_tangkap_kapal'] ?>"><?= $data['nama_alat_tangkap_kapal'] ?></option>
                                                         <?php endforeach ?>
@@ -135,6 +138,7 @@
                                                 <div class="form-group">
                                                     <label for="perusahaan">Perusahaan <span class="mandatory">*</span></label><br />
                                                     <select class="form-control select-with-select2" name="id_perusahaan" id="id_perusahaan">
+                                                        <option value="<?= $edit_kapal['id_perusahaan'] ?>"><?= $edit_kapal['nama'] ?></option>
                                                         <?php foreach ($perusahaan as $data) : ?>
                                                             <option value="<?= $data['id_perusahaan'] ?>"><?= $data['nama'] ?></option>
                                                         <?php endforeach ?>
@@ -142,11 +146,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat">Alamat <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="alamat" id="alamat" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['alamat'] ?>" name="alamat" id="alamat" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="siup">SIUP <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="siup" id="siup" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['siup'] ?>" name="siup" id="siup" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="siupurl">File SIUP</label>
@@ -154,7 +158,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sikpi">SIKPI <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="sikpi" id="sikpi" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['sikpi'] ?>" name="sikpi" id="sikpi" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sikpiurl">File SIKPI</label>
@@ -162,7 +166,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sipi">SIPI <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="sipi" id="sipi" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['sipi'] ?>" name="sipi" id="sipi" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sipiurl">File SIPI</label>
@@ -172,7 +176,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="sipiandon">SIPI Andon <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="sipi_andon" id="sipi_andon" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['sipi_andon'] ?>" name="sipi_andon" id="sipi_andon" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sipiandonurl">File SIPI Andon</label>
@@ -180,7 +184,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="suratkelaikan">Surat Kelayakan <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="surat_kelayakan" id="surat_kelayakan" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['surat_kelayakan'] ?>" name="surat_kelayakan" id="surat_kelayakan" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="suratkelaikanurl">File Surat Kelayakan</label>
@@ -188,7 +192,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pasbesar">Pas Kecil / Pas Besar / Surat Laut <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="pas_kecil_pas_besar_surat_laut" id="pas_kecil_pas_besar_surat_laut" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['pas_kecil_pas_besar_surat_laut'] ?>" name="pas_kecil_pas_besar_surat_laut" id="pas_kecil_pas_besar_surat_laut" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pasbesarurl">File Pas Kecil / Pas Besar / Surat Laut</label>
@@ -196,7 +200,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="suratukurkapal">Surat Ukur Kapal <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="surat_ukur_kapal" id="surat_ukur_kapal" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['surat_ukur_kapal'] ?>" name="surat_ukur_kapal" id="surat_ukur_kapal" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="suratukurkapalurl">File Surat Ukur Kapal</label>
@@ -204,7 +208,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="grossaktekapal">Gross Akte Kapal <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="gross_akte_kapal" id="gross_akte_kapal" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['gross_akte_kapal'] ?>" name="gross_akte_kapal" id="gross_akte_kapal" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="grossaktekapalurl">File Gross Akte Kapal</label>
@@ -213,6 +217,7 @@
                                                 <div class="form-group">
                                                     <label for="provinsi">Provinsi <span class="mandatory">*</span></label><br />
                                                     <select class="form-control select2" name="id_provinsi" id="id_provinsi">
+                                                        <option value="<?= $edit_kapal['id_provinsi'] ?>"><?= $edit_kapal['nama_provinsi'] ?></option>
                                                         <?php foreach ($provinsi as $data) : ?>
                                                             <option value="<?= $data['id_provinsi'] ?>"><?= $data['nama_provinsi'] ?></option>
                                                         <?php endforeach ?>
@@ -221,6 +226,7 @@
                                                 <div class="form-group">
                                                     <label for="wpp">WPP <span class="mandatory">*</span></label>
                                                     <select name="id_wpp" id="id_wpp" class="form-control select2">
+                                                        <option value="<?= $edit_kapal['id_wpp'] ?>"><?= $edit_kapal['nama_wpp'] ?></option>
                                                         <?php foreach ($wpp as $data) : ?>
                                                             <option value="<?= $data['id_wpp'] ?>"><?= $data['nama_wpp'] ?></option>
                                                         <?php endforeach ?>
@@ -228,35 +234,46 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="dpi">DPI <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="dpi" id="dpi" value="" maxlength="255" readonly />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['dpi'] ?>" name="dpi" id="dpi" value="" maxlength="255" readonly />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pelabuhanpangkalan">Pelabuhan Pangkalan <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="pelabuhan_pangkalan" id="pelabuhan_pangkalan" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['pelabuhan_pangkalan'] ?>" name="pelabuhan_pangkalan" id="pelabuhan_pangkalan" maxlength="255" />
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="tanggalsipi">Tanggal SIPI <span class="mandatory">*</span></label>
-                                                            <input type="date" class="form-control" name="tanggal_sipi" id="tanggal_sipi" maxlength="10" />
+                                                            <input type="date" class="form-control" value="<?= $edit_kapal['tanggal_sipi'] ?>" name="tanggal_sipi" id="tanggal_sipi" maxlength="10" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="tanggalakhirsipi">Tanggal Akhir SIPI</label>
-                                                            <input type="date" class="form-control" name="tanggal_akhir_sipi" id="tanggal_akhir_sipi" maxlength="10" />
+                                                            <input type="date" class="form-control" value="<?= $edit_kapal['tanggal_akhir_sipi'] ?>" name="tanggal_akhir_sipi" id="tanggal_akhir_sipi" maxlength="10" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="penggunabuat">Pengguna Buat <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="pengguna_buat" id="pengguna_buat" maxlength="255" />
+                                                    <input type="text" class="form-control" value="<?= $edit_kapal['pengguna_buat'] ?>" name="pengguna_buat" id="pengguna_buat" maxlength="255" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status_sipi">Status SIPI <span class="mandatory">*</span></label>
                                                     <br />
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="status_sipi" value="2" checked> Semua
+                                                        <input type="radio" name="status_sipi" value="<?= $edit_kapal['status_sipi'] ?>" checked>
+                                                        <?php if ($edit_kapal['status_sipi'] == "0") { ?>
+                                                            Expired
+                                                        <?php } elseif ($edit_kapal['status_sipi'] == "1") { ?>
+                                                            Not Expired
+                                                        <?php } elseif ($edit_kapal['status_sipi'] == "2") { ?>
+                                                            Semua
+                                                        <?php } ?>
+                                                    </label>
+                                                    <br>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="status_sipi" value="2"> Semua
                                                     </label>
                                                     <label class="radio-inline">
                                                         <input type="radio" name="status_sipi" value="1"> Not Expired
@@ -268,6 +285,7 @@
                                                 <div class="form-group">
                                                     <label for="layanan">Jenis Layanan</label>
                                                     <select name="id_jenis_layanan" id="id_jenis_layanan" class="form-control select2">
+                                                        <option value="<?= $edit_kapal['id_jenis_layanan'] ?>"><?= $edit_kapal['nama_jenis_layanan'] ?></option>
                                                         <?php foreach ($jenis_layanan as $data) : ?>
                                                             <option value="<?= $data['id_jenis_layanan'] ?>"><?= $data['nama_jenis_layanan'] ?></option>
                                                         <?php endforeach ?>
@@ -275,6 +293,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                 </div>
                             </div>
                         </div>

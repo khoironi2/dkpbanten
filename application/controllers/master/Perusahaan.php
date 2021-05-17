@@ -163,11 +163,13 @@ class Perusahaan extends CI_Controller
                     echo $this->upload->display_errors();
                 }
             }
+            $insert = $this->Perusahaan_model->update($id, $data);
 
-            $this->db->where('id_perusahaan', $this->input->post('id_perusahaan'));
-            $this->db->update('tbl_perusahaan', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Dokumentasi Berhasil Ditambahkan</div>');
-            redirect('master/perusahaan');
+            if ($insert) {
+
+                $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data berhasil ditambahkan !</div>');
+                redirect('master/perusahaan');
+            }
         }
     }
 

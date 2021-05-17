@@ -40,16 +40,17 @@
                                 <div class="box-body">
 
                                     <form action="<?= base_url('master/perusahaan/edit/' . $siup['id_perusahaan']); ?>" method="POST" enctype="multipart/form-data">
-                                        <?php foreach ($edit_perusahaan as $data) : ?>
+                                        <?php foreach ($kapal as $data) : ?>
                                             <div class="form-group">
                                                 <label for="name">Nama <span class="mandatory">*</span></label>
                                                 <input type="text" class="form-control" value="<?= $data['nama'] ?>" name="nama" id="nama" maxlength="255" required />
-
+                                                <input type="text" hidden class="form-control" value="<?= $data['id_perusahaan'] ?>" name="id_perusahaan" id="id_perusahaan" maxlength="255" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="siupnum">No. SIUP <span class="mandatory">*</span></label>
                                                 <input type="text" class="form-control" value="<?= $data['no_siup'] ?>" name="no_siup" id="no_siup" required maxlength="255" />
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="siupimage">Upload SIUP</label>
                                                 <input type="file" id="file_siup" name="file_siup">
