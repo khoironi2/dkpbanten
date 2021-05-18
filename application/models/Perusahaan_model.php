@@ -29,7 +29,7 @@ class Perusahaan_model extends CI_model
 
         $result = $this->db->get();
 
-        return $result->result_array();
+        return $result->row_array();
     }
 
     public function update($id, $data)

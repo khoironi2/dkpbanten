@@ -107,6 +107,7 @@ class Perusahaan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'perusahaan' => $this->Perusahaan_model->getAll(),
+            'kapal' => $this->Perusahaan_model->getAll(),
             'edit_perusahaan' => $this->Perusahaan_model->getid($id),
             'siup' => $this->db->get_where('tbl_perusahaan', ['id_perusahaan' => $id])->row_array(),
             'npwp' => $this->db->get_where('tbl_perusahaan', ['id_perusahaan' => $id])->row_array()

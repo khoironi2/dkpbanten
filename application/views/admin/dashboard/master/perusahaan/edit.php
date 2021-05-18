@@ -39,68 +39,68 @@
                                 </div>
                                 <div class="box-body">
 
-                                    <form action="<?= base_url('master/perusahaan/edit/' . $siup['id_perusahaan']); ?>" method="POST" enctype="multipart/form-data">
-                                        <?php foreach ($kapal as $data) : ?>
-                                            <div class="form-group">
-                                                <label for="name">Nama <span class="mandatory">*</span></label>
-                                                <input type="text" class="form-control" value="<?= $data['nama'] ?>" name="nama" id="nama" maxlength="255" required />
-                                                <input type="text" hidden class="form-control" value="<?= $data['id_perusahaan'] ?>" name="id_perusahaan" id="id_perusahaan" maxlength="255" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="siupnum">No. SIUP <span class="mandatory">*</span></label>
-                                                <input type="text" class="form-control" value="<?= $data['no_siup'] ?>" name="no_siup" id="no_siup" required maxlength="255" />
-                                            </div>
+                                    <form action="<?= base_url('master/perusahaan/edit/' . $edit_perusahaan['id_perusahaan']); ?>" method="POST" enctype="multipart/form-data">
 
-                                            <div class="form-group">
-                                                <label for="siupimage">Upload SIUP</label>
-                                                <input type="file" id="file_siup" name="file_siup">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="name">Nama <span class="mandatory">*</span></label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['nama'] ?>" name="nama" id="nama" maxlength="255" required />
+                                            <input type="text" hidden class="form-control" value="<?= $edit_perusahaan['id_perusahaan'] ?>" name="id_perusahaan" id="id_perusahaan" maxlength="255" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="siupnum">No. SIUP <span class="mandatory">*</span></label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['no_siup'] ?>" name="no_siup" id="no_siup" required maxlength="255" />
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label for="npwpnum">No. NPWP <span class="mandatory">*</span></label>
-                                                <input type="text" class="form-control" value="<?= $data['no_npwp'] ?>" name="no_npwp" id="no_npwp" required maxlength="255" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="npwpimage">Upload NPWP</label>
-                                                <input type="file" id="file_npwp" name="file_npwp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="address">Alamat</label>
-                                                <textarea class="form-control" name="alamat" id="alamat" rows="7"><?= $data['alamat'] ?></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="phone">Nomor Telepon</label>
-                                                <input type="text" class="form-control" value="<?= $data['no_telpon'] ?>" name="no_telpon" id="no_telpon" required maxlength="50" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="text" class="form-control" value="<?= $data['email'] ?>" name="email" id="email" required maxlength="255" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="picname">Nama PIC</label>
-                                                <input type="text" class="form-control" value="<?= $data['nama_pic'] ?>" name="nama_pic" id="nama_pic" required maxlength="255" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="picphone">No Telepon PIC</label>
-                                                <input type="text" class="form-control" value="<?= $data['no_telpon_pic'] ?>" name="no_telpon_pic" id="no_telpon_pic" maxlength="50" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="picemail">Email PIC</label>
-                                                <input type="text" class="form-control" value="<?= $data['email_pic'] ?>" name="email_pic" id="email_pic" required maxlength="255" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="status">Status <span class="mandatory">*</span></label>
-                                                <select name="status" id="status" class="form-control">
-                                                    <?php if ($data['status'] == "1") { ?>
-                                                        <option value="1">Aktif</option>
-                                                    <?php } elseif ($data['status'] == "0") { ?>
-                                                        <option value="0">Tidak Aktif</option>
-                                                    <?php } ?>
+                                        <div class="form-group">
+                                            <label for="siupimage">Upload SIUP</label>
+                                            <input type="file" id="file_siup" name="file_siup">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="npwpnum">No. NPWP <span class="mandatory">*</span></label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['no_npwp'] ?>" name="no_npwp" id="no_npwp" required maxlength="255" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="npwpimage">Upload NPWP</label>
+                                            <input type="file" id="file_npwp" name="file_npwp">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Alamat</label>
+                                            <textarea class="form-control" name="alamat" id="alamat" rows="7"><?= $edit_perusahaan['alamat'] ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Nomor Telepon</label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['no_telpon'] ?>" name="no_telpon" id="no_telpon" required maxlength="50" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['email'] ?>" name="email" id="email" required maxlength="255" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="picname">Nama PIC</label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['nama_pic'] ?>" name="nama_pic" id="nama_pic" required maxlength="255" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="picphone">No Telepon PIC</label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['no_telpon_pic'] ?>" name="no_telpon_pic" id="no_telpon_pic" maxlength="50" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="picemail">Email PIC</label>
+                                            <input type="text" class="form-control" value="<?= $edit_perusahaan['email_pic'] ?>" name="email_pic" id="email_pic" required maxlength="255" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="status">Status <span class="mandatory">*</span></label>
+                                            <select name="status" id="status" class="form-control">
+                                                <?php if ($edit_perusahaan['status'] == "1") { ?>
                                                     <option value="1">Aktif</option>
+                                                <?php } elseif ($edit_perusahaan['status'] == "0") { ?>
                                                     <option value="0">Tidak Aktif</option>
-                                                </select>
-                                            </div>
-                                        <?php endforeach ?>
+                                                <?php } ?>
+                                                <option value="1">Aktif</option>
+                                                <option value="0">Tidak Aktif</option>
+                                            </select>
+                                        </div>
+
 
                                 </div>
                             </div>
