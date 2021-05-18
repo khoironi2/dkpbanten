@@ -38,18 +38,18 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/jenis_ikan/add') ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?= base_url('master/jenis_ikan/edit/' . $edit_jenis_ikan['id_jenis_ikan']) ?>" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="name">Nama Indonesia <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="nama_indonesia" id="nama_indonesia" maxlength="255" autofocus />
+                                            <input type="text" class="form-control" value="<?= $edit_jenis_ikan['nama_indonesia'] ?>" name="nama_indonesia" id="nama_indonesia" maxlength="255" autofocus />
                                         </div>
                                         <div class="form-group">
                                             <label for="namelatin">Nama Latin <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="nama_latin" id="nama_latin" maxlength="255" />
+                                            <input type="text" class="form-control" value="<?= $edit_jenis_ikan['nama_latin'] ?>" name="nama_latin" id="nama_latin" maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="namedaerah">Nama Daerah <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="nama_daerah" id="nama_daerah" maxlength="255" />
+                                            <input type="text" class="form-control" value="<?= $edit_jenis_ikan['nama_daerah'] ?>" name="nama_daerah" id="nama_daerah" maxlength="255" />
                                         </div>
                                         <div class="form-group">
                                             <label for="fileurl">Gambar / File Jenis Ikan</label>
@@ -57,11 +57,16 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="7"></textarea>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="7"><?= $edit_jenis_ikan['deskripsi'] ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
                                             <select name="status" id="status" class="form-control">
+                                                <?php if ($edit_jenis_ikan['status'] == "1") { ?>
+                                                    <option value="1">Aktif</option>
+                                                <?php } elseif ($edit_jenis_ikan['status'] == "0") { ?>
+                                                    <option value="0">Tidak Aktif</option>
+                                                <?php } ?>
                                                 <option value="1" selected>Aktif</option>
                                                 <option value="0">Tidak Aktif</option>
                                             </select>
