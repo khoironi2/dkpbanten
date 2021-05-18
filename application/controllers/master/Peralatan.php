@@ -28,6 +28,7 @@ class Peralatan extends CI_Controller
             'child' => 'Peralatan',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'peralatan' => $this->Peralatan_model->getAll(),
         ];
 
         $this->load->view('templates/header', $data);
@@ -40,7 +41,6 @@ class Peralatan extends CI_Controller
 
     public function add()
     {
-
         $data = [
             'title' => 'PERALATAN',
             'parent' => 'Master ',
@@ -50,111 +50,118 @@ class Peralatan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
         ];
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar', $data);
-        $this->load->view('templates/sidebar');
-        // $this->load->view('templates/topbar');
-        $this->load->view('admin/dashboard/master/peralatan/add', $data);
-        $this->load->view('templates/footer');
-    }
+        $this->form_validation->set_rules('nama', 'nama', 'required');
 
-    public function adt()
-    {
-
-        $this->form_validation->set_rules('nik', 'Nik', 'required');
-        // $this->form_validation->set_rules('level', 'Level', 'required');
-
-        if ($this->form_validation->run() == FALSE) {
-
-            $errors = $this->form_validation->error_array();
-            $this->session->set_flashdata('errors', $errors);
-            $this->session->set_flashdata('input', $this->input->post());
-            redirect('manajemen/manajemen');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar', $data);
+            $this->load->view('templates/sidebar');
+            // $this->load->view('templates/topbar');
+            $this->load->view('admin/dashboard/master/peralatan/add', $data);
+            $this->load->view('templates/footer');
         } else {
-
-            $nama = $this->input->post('nama');
-            $nik = $this->input->post('nik');
-            $id_jabatan = $this->input->post('id_jabatan');
-            $password = '12345';
-            $pass = password_hash($password, PASSWORD_DEFAULT);
-            // $level = $this->input->post('level');
-            date_default_timezone_set("ASIA/JAKARTA");
             $data = [
-                'nama' => $nama,
-                'nik' => $nik,
-                'id_jabatan' => $id_jabatan,
-                'password' => $pass,
-                'time_create_pegawai' => date('Y-m-d H:i:s')
+                'nama' => $this->input->post('nama'),
+                'merk_tipe' => $this->input->post('merk_tipe'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'stok' => $this->input->post('stok'),
+                'status' => $this->input->post('status'),
             ];
 
-            $insert = $this->Manajemen_model->insert($data);
+            $upload_image = $_FILES['file_peralatan']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'jpg|png|jpeg|pdf|doc|docx|csv';
+                $config['upload_path'] = './assets/master/peralatan/upload/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_peralatan')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('file_peralatan', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            $this->db->insert('tbl_peralatan', $data);
+            $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Berhasil Ditambahkan</div>');
+            redirect('master/peralatan');
+        }
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'PERALATAN',
+            'parent' => 'Master ',
+            'child' => 'Peralatan',
+            'newchild' => 'Tambah ',
+            'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
+            'jabatan' => $this->Pegawai_model->getAll(),
+            'edit_peralatan' => $this->Peralatan_model->getid($id),
+            'alat' => $this->db->get_where('tbl_peralatan', ['id_peralatan' => $id])->row_array()
+        ];
+
+        $old_alat = $data['alat']['file_peralatan'];
+
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar', $data);
+            $this->load->view('templates/sidebar');
+            // $this->load->view('templates/topbar');
+            $this->load->view('admin/dashboard/master/peralatan/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'nama' => $this->input->post('nama'),
+                'merk_tipe' => $this->input->post('merk_tipe'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'stok' => $this->input->post('stok'),
+                'status' => $this->input->post('status'),
+            ];
+
+            $upload_image = $_FILES['file_peralatan']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'jpg|png|jpeg|pdf|doc|docx|csv';
+                $config['upload_path'] = './assets/master/peralatan/upload/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_peralatan')) {
+                    if ($old_alat != 'default-user-image.jpg') {
+                        unlink(FCPATH . 'assets/master/peralatan/upload/' . $old_alat);
+                    }
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('file_peralatan', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+            $insert = $this->Peralatan_model->update($id, $data);
 
             if ($insert) {
-                $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data berhasil ditambahkan !</div>');
-                redirect('manajemen/manajemen');
+
+                $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data berhasil Diperbarui !</div>');
+                redirect('master/peralatan');
             }
         }
     }
 
-    public function edit()
-    {
-        $id = $this->input->post('id_pegawai');
-        $nama = $this->input->post('nama');
-        $id_jabatan = $this->input->post('id_jabatan');
-        $nik = $this->input->post('nik');
-        $nidn = $this->input->post('nidn');
-        $nidk = $this->input->post('nidk');
-        $nitk = $this->input->post('nitk');
-        $tgl_masuk = $this->input->post('tgl_masuk');
-        $tgl_keluar = $this->input->post('tgl_keluar');
-        $sk_1 = $this->input->post('sk_1');
-        $masa_kerja_sk_1 = $this->input->post('masa_kerja_sk_1');
-        $sk_2 = $this->input->post('sk_2');
-        $masa_kerja_sk_2 = $this->input->post('masa_kerja_sk_2');
-        $no_hp = $this->input->post('no_hp');
-        $email = $this->input->post('email');
-        $tempat_lahir = $this->input->post('tempat_lahir');
-        $tgl_lahir = $this->input->post('tgl_lahir');
-        $pendidikan_terakhir = $this->input->post('pendidikan_terakhir');
-        $program_studi = $this->input->post('program_studi');
-        $alamat = $this->input->post('alamat');
-        $kegiatan_yang_diikuti = $this->input->post('kegiatan_yang_diikuti');
-
-        $data = [
-            'id_pegawai' => $id,
-            'nama' => $nama,
-            'id_jabatan' => $id_jabatan,
-            'nik' => $nik,
-            'nidn' => $nidn,
-            'nidk' => $nidk,
-            'nitk' => $nitk,
-            'tgl_masuk' => $tgl_masuk,
-            'tgl_keluar' => $tgl_keluar,
-            'sk_1' => $sk_1,
-            'masa_kerja_sk_1' => $masa_kerja_sk_1,
-            'sk_2' => $sk_2,
-            'masa_kerja_sk_2' => $masa_kerja_sk_2,
-            'no_hp' => $no_hp,
-            'email' => $email,
-            'tempat_lahir' => $tempat_lahir,
-            'tgl_lahir' => $tgl_lahir,
-            'pendidikan_terakhir' => $pendidikan_terakhir,
-            'program_studi' => $program_studi,
-            'alamat' => $alamat,
-            'kegiatan_yang_diikuti' => $kegiatan_yang_diikuti,
-            'time_update_pegawai' => date('Y-m-d H:i:s')
-        ];
-        $update = $this->Manajemen_model->update($id, $data);
-        if ($update) {
-
-            $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data berhasil diperbarui !</div>');
-            redirect('manajemen/manajemen');
-        }
-    }
     public function delete($id)
     {
-        $data['id_pegawai'] = $this->Manajemen_model->delete($id);
+        $data = [
+            'peralatan' => $this->db->get_where('tbl_peralatan', ['id_peralatan' => $id])->row_array(),
+        ];
+
+        $old_siup = $data["peralatan"]["file_peralatan"];
+        if ($old_siup != 'default.jpg') {
+            unlink(FCPATH . 'assets/master/peralatan/upload/' . $old_siup);
+        }
+
+        $this->db->delete('tbl_peralatan', ['id_peralatan' => $id]);
         $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Sukses, Data berhasil di Hapus!</div>');
-        redirect('manajemen/manajemen');
+        redirect('master/peralatan');
     }
 }

@@ -38,23 +38,23 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/peralatan/add') ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?= base_url('master/peralatan/edit/' . $edit_peralatan['id_peralatan']) ?>" enctype="multipart/form-data">
 
                                         <div class="form-group">
                                             <label for="name">Nama <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control" name="nama" id="nama" maxlength="255" autofocus />
+                                            <input type="text" class="form-control" value="<?= $edit_peralatan['nama'] ?>" name="nama" id="nama" maxlength="255" autofocus />
                                         </div>
                                         <div class="form-group">
                                             <label for="type">Merk/Tipe <span class="mandatory">*</span></label>
-                                            <input type="text" name="merk_tipe" id="merk_tipe" class="form-control" maxlength="255">
+                                            <input type="text" value="<?= $edit_peralatan['merk_tipe'] ?>" name="merk_tipe" id="merk_tipe" class="form-control" maxlength="255">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="7"></textarea>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="7"><?= $edit_peralatan['deskripsi'] ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="stock">Stok <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control dotseparator" name="stok" id="stok" maxlength="15" />
+                                            <input type="text" class="form-control dotseparator" value="<?= $edit_peralatan['stok'] ?>" name="stok" id="stok" maxlength="15" />
                                         </div>
                                         <div class="form-group">
                                             <label for="fileurl">Gambar / File Peralatan</label>
@@ -63,6 +63,11 @@
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
                                             <select name="status" id="status" class="form-control">
+                                                <?php if ($edit_peralatan['status'] == "1") { ?>
+                                                    <option value="1">Aktif</option>
+                                                <?php } elseif ($edit_peralatan['status'] == "0") { ?>
+                                                    <option value="0">Tidak Aktif</option>
+                                                <?php } ?>
                                                 <option value="1" selected>Aktif</option>
                                                 <option value="0">Tidak Aktif</option>
                                             </select>
