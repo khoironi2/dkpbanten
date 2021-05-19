@@ -52,6 +52,9 @@
                                             <input type="text" class="form-control" value="<?= $edit_jenis_ikan['nama_daerah'] ?>" name="nama_daerah" id="nama_daerah" maxlength="255" />
                                         </div>
                                         <div class="form-group">
+                                            <img height="100" src="<?= base_url('assets/master/jenis_ikan/upload/' . $edit_jenis_ikan['gambar_ikan']) ?>" alt="<?= $edit_jenis_ikan['nama_indonesia'] ?>">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="fileurl">Gambar / File Jenis Ikan</label>
                                             <input type="file" class="form-control" name="gambar_ikan" id="gambar_ikan" />
                                         </div>

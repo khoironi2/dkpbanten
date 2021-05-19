@@ -38,11 +38,14 @@
                                 <div class="box-header">
                                 </div>
                                 <div class="box-body">
-                                    <form method="post" action="<?= base_url('master/harga_ikan/save') ?>">
-
+                                    <form method="post" action="<?= base_url('master/harga_ikan/update') ?>">
+                                        <div class="form-group">
+                                            <img height="100" src="<?= base_url('assets/master/jenis_ikan/upload/' . $edit_harga_ikan['gambar_ikan']) ?>" alt="<?= $edit_harga_ikan['nama_indonesia'] ?>">
+                                        </div>
                                         <div class="form-group">
                                             <label for="jenisikan">Jenis Ikan <span class="mandatory">*</span></label>
                                             <select name="id_jenis_ikan" id="id_jenis_ikan" class="form-control select2">
+                                                <option value="<?= $edit_harga_ikan['id_jenis_ikan'] ?>"><?= $edit_harga_ikan['nama_indonesia'] ?></option>
                                                 <?php foreach ($jenis_ikan as $data) : ?>
                                                     <option value="<?= $data['id_jenis_ikan'] ?>"><?= $data['nama_indonesia'] ?></option>
                                                 <?php endforeach ?>
@@ -50,11 +53,17 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Harga <span class="mandatory">*</span></label>
-                                            <input type="text" name="harga" class="form-control dotseparator" id="harga" maxlength="15" value="" />
+                                            <input type="text" value="<?= $edit_harga_ikan['harga'] ?>" name="harga" class="form-control dotseparator" id="harga" maxlength="15" value="" />
+                                            <input type="text" hidden value="<?= $edit_harga_ikan['id_harga_ikan'] ?>" name="id_harga_ikan" class="form-control dotseparator" id="harga" maxlength="15" value="" />
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status <span class="mandatory">*</span></label>
                                             <select name="status" id="status" class="form-control">
+                                                <?php if ($edit_harga_ikan['status'] == '1') { ?>
+                                                    <option value="1" selected>Aktif</option>
+                                                <?php } elseif ($edit_harga_ikan['status'] == '0') { ?>
+                                                    <option value="0">Tidak Aktif</option>
+                                                <?php } ?>
                                                 <option value="1" selected>Aktif</option>
                                                 <option value="0">Tidak Aktif</option>
                                             </select>

@@ -49,6 +49,7 @@ class Jenis_ikan extends CI_Controller
             'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'jenis_ikan' => $this->Jenis_ikan_model->getAll(),
         ];
 
         $this->form_validation->set_rules('nama_indonesia', 'nama_indonesia', 'required');
