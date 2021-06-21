@@ -219,6 +219,18 @@
         });
     });
 </script>
+
+
+<!-- Summernote -->
+<script src="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- Page specific script -->
+<script>
+    $(function() {
+        //Add text editor
+        $('#compose-textarea').summernote()
+    })
+</script>
 </body>
 
 </html>

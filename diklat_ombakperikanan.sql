@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 01, 2021 at 08:26 PM
+-- Generation Time: Jun 21, 2021 at 10:47 AM
 -- Server version: 5.7.24-log
--- PHP Version: 7.2.10
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dkp_banten`
+-- Database: `diklat_ombakperikanan`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,23 @@ CREATE TABLE `tbl_alat_tangkap_kapal` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_alat_tangkap_kapal`
+--
+
+INSERT INTO `tbl_alat_tangkap_kapal` (`id_alat_tangkap_kapal`, `nama_alat_tangkap_kapal`, `status`) VALUES
+(2, 'JARING INSANG HANYUT', '1'),
+(3, 'PANCING', '1'),
+(4, 'BUBU (TRAPS)', '1'),
+(5, 'JARING INSANG ', '1'),
+(6, 'BAGAN PERAHU', '1'),
+(7, 'PENGANGKUT', '1'),
+(8, 'JARING RAMPUS', '1'),
+(9, 'SERO', '1'),
+(10, 'BAGAN TANCAP', '1'),
+(11, 'PUKAT CINCIN PELAGIS KECIL SATU KAPAL', '1'),
+(12, 'HAND LINE/PANCING ULUR', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +62,13 @@ CREATE TABLE `tbl_bendera_kapal` (
   `nama_bendera_kapal` varchar(255) DEFAULT NULL,
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_bendera_kapal`
+--
+
+INSERT INTO `tbl_bendera_kapal` (`id_bendera_kapal`, `nama_bendera_kapal`, `status`) VALUES
+(1, 'Indonesia', '1');
 
 -- --------------------------------------------------------
 
@@ -64,7 +88,10 @@ CREATE TABLE `tbl_daerah_operasional_penangkapan_ikan` (
 --
 
 INSERT INTO `tbl_daerah_operasional_penangkapan_ikan` (`id_daerah_operasional_penangkapan_ikan`, `id_wpp`, `dpi`, `status`) VALUES
-(3, 2, 'Cukimai', '1');
+(3, 2, 'Cukimai', '1'),
+(4, 1, 'INDONESIA', '1'),
+(5, 3, 'INDONESIA', '1'),
+(7, 4, 'INDONESIA', '1');
 
 -- --------------------------------------------------------
 
@@ -161,6 +188,15 @@ CREATE TABLE `tbl_jenis_kapal` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_jenis_kapal`
+--
+
+INSERT INTO `tbl_jenis_kapal` (`id_jenis_kapal`, `nama_jenis_kapal`, `status`) VALUES
+(1, 'PERAHU TANPA MOTOR', '1'),
+(2, 'KAPAL MOTOR TEMPEL', '1'),
+(3, 'KAPAL MOTOR ', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -183,7 +219,12 @@ CREATE TABLE `tbl_jenis_layanan` (
 
 INSERT INTO `tbl_jenis_layanan` (`id_jenis_layanan`, `id_layanan`, `nama_jenis_layanan`, `id_satuan`, `deskripsi`, `harga`, `status`) VALUES
 (1, 2, 'Orang/Umum', 1, 'Orang/Umum', '1000', '1'),
-(2, 2, 'Becak/ Gerobak/ Cikar/ Dokar/ Sepeda', 1, 'Becak/ Gerobak/ Cikar/ Dokar/ Sepeda', '1000', '1');
+(2, 2, 'Becak/ Gerobak/ Cikar/ Dokar/ Sepeda', 1, 'Becak/ Gerobak/ Cikar/ Dokar/ Sepeda', '1000', '1'),
+(3, 2, 'ORANG/UMUM', 11, '', '1000', '1'),
+(4, 2, 'BECAK/GERBOAK/CIKAR/DOKAR/SEPEDA', 11, '', '1000', '1'),
+(5, 2, 'Motor', 14, '', '15000', '1'),
+(6, 2, 'Motor', 11, '', '2000', '1'),
+(7, 2, 'Mobil', 11, '', '3000', '1');
 
 -- --------------------------------------------------------
 
@@ -238,6 +279,13 @@ CREATE TABLE `tbl_kapal` (
   `id_jenis_layanan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_kapal`
+--
+
+INSERT INTO `tbl_kapal` (`id_kapal`, `nama_kapal`, `id_tipe_kapal`, `id_jenis_kapal`, `id_bendera_kapal`, `pemilik`, `nahkoda`, `jumlah_abk`, `merk_mesin_utama`, `merk_mesin_tambahan`, `pk_ps_hp`, `gt`, `panjang_kapal`, `lebar_kapal`, `draft_kapal`, `tanda_selar`, `id_alat_tangkap_kapal`, `id_perusahaan`, `alamat`, `siup`, `file_siup`, `sikpi`, `file_sikpi`, `sipi`, `file_sipi`, `sipi_andon`, `file_sipi_andon`, `surat_kelayakan`, `file_surat_kelayakan`, `pas_kecil_pas_besar_surat_laut`, `file_pas_kecil_pas_besar_surat_laut`, `surat_ukur_kapal`, `file_surat_ukur_kapal`, `gross_akte_kapal`, `file_gross_akte_kapal`, `id_provinsi`, `id_wpp`, `dpi`, `pelabuhan_pangkalan`, `tanggal_sipi`, `tanggal_akhir_sipi`, `pengguna_buat`, `status_sipi`, `id_jenis_layanan`) VALUES
+(1, 'MINA SEJAHTERA 2', 1, 2, 1, 'AAM', '-', '-', 'YAMAHA ', '-', '15 PK', '1', '-', '-', '-', '- ', 2, 1, 'KP. CIBEAS RT 2 RW 1 Desa Sawarna Keamatan Bayah Kab Lebak', '-', NULL, '-', NULL, '-', NULL, '-', NULL, '-', NULL, '45.21.3698.195.00050', NULL, '-', NULL, '-', NULL, 1, 3, '', 'PP Sawarna', '2021-06-01', '2021-06-15', 'Kapal Penangkap Ivan', '2', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -270,6 +318,22 @@ CREATE TABLE `tbl_layanan` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_layanan`
+--
+
+INSERT INTO `tbl_layanan` (`id_layanan`, `nama`, `deskripsi`, `status`) VALUES
+(1, 'Pendapatan Lain-lain yang  sah', '', '1'),
+(2, 'Pelayanan Pas Masuk', 'Pelayanan pas masuk orang, sepeda motor, mobil, es, dan truck/bis', '1'),
+(3, 'Layanan Jasa Tambat Labuh Kapal Perikanan', '', '1'),
+(4, 'Pelayanan Air Bersih', 'Pelayanan kebersihan TPI, Gudang Pengepakan, KIOS Basah, KIOS Kering, dan Kolam Labuh', '1'),
+(5, 'Pemakaian Slipway Docking', 'Pelayanan slipway docking', '1'),
+(6, 'Pelayanan Sewa Bangunan', 'Pemakaian bangunan permanen di Pelabuhan', '1'),
+(7, 'Pelayanan Sewa Lahan', 'Pemakaian lahan di pelabuhan', '1'),
+(8, 'Pelayanan Pemakaian Gedung', 'Pelayanan pemakaian Gedung Pertemuan, Guest House, dan Rumah Singgah Andon', '1'),
+(9, 'Penyewaan Peralatan/Kendaraan', 'Pemakaian Peralatan di Pelabuhan', '1'),
+(10, 'Pelayanan Wisata Bahari', 'Pelayanan pemakaian kendaraan kapal dan peralatan selam lengkap untuk Wisata Bahari', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -298,7 +362,7 @@ CREATE TABLE `tbl_pegawai` (
   `tgl_lahir` date DEFAULT NULL,
   `pendidikan_terakhir` varchar(255) DEFAULT NULL,
   `program_studi` varchar(255) DEFAULT NULL,
-  `status` enum('aktif,','non_aktif') DEFAULT NULL,
+  `status` enum('0','1') DEFAULT NULL,
   `id_bidang` int(11) DEFAULT NULL,
   `time_login_pegawai` datetime DEFAULT NULL,
   `time_logout_pegawai` datetime DEFAULT NULL,
@@ -325,17 +389,19 @@ CREATE TABLE `tbl_pegawai` (
   `tanggal_sk_cpns` varchar(50) DEFAULT NULL,
   `lembaga_pengangkat` varchar(50) DEFAULT NULL,
   `golongan` varchar(50) DEFAULT NULL,
-  `sumber_gaji` varchar(50) DEFAULT NULL
+  `sumber_gaji` varchar(50) DEFAULT NULL,
+  `nip_niptt` varchar(255) DEFAULT NULL,
+  `jabatan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_pegawai`
 --
 
-INSERT INTO `tbl_pegawai` (`id_pegawai`, `nik`, `password`, `nidn`, `nidk`, `nitk`, `nama`, `tgl_masuk`, `tgl_keluar`, `sk_1`, `masa_kerja_sk_1`, `sk_2`, `masa_kerja_sk_2`, `id_jabatan`, `no_hp`, `email`, `alamat`, `tempat_lahir`, `tgl_lahir`, `pendidikan_terakhir`, `program_studi`, `status`, `id_bidang`, `time_login_pegawai`, `time_logout_pegawai`, `time_create_pegawai`, `time_update_pegawai`, `kegiatan_yang_diikuti`, `gambar_pegawai`, `jenis_kelamin`, `nik_ktp`, `agama`, `kewarganegaraan`, `rt`, `rw`, `dusun`, `kelurahan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `telpon_rumah`, `nip_pns`, `status_kepegawaian`, `status_keaktifan`, `sk_cpns`, `tanggal_sk_cpns`, `lembaga_pengangkat`, `golongan`, `sumber_gaji`) VALUES
-(1, '7700015071', '$2y$10$WfdBJdKFOpteuengmVyQnuDBe7nutID8qcG.tDjxvV1o9KIk5Y2j.', NULL, NULL, NULL, 'Mega Santi Sekartaji, S.KM.', NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, 'megasekartaji94@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 6, '2021-06-01 20:23:10', '2021-05-17 09:47:58', '2021-04-20 10:43:05', NULL, NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '6503616001', '$2y$10$oRMHJzLLZL5vDkhtLRK.euZEFIFTGTVESiyLDENpUdgjP8rKQ42mq', NULL, NULL, NULL, 'dr. H.Titis Wahyuono, M.Si.', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-04-27 10:32:44', NULL, '2021-04-22 19:18:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '7700015076', '$2y$10$bO/.enyeGD12rhYRUVnIO.qkSkwn0eRcbPngowmZv/jwWlvzQVVMG', NULL, NULL, NULL, 'Edy Setiyawan, A.Md.', NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-04-30 10:39:26', NULL, '2021-04-30 10:34:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_pegawai` (`id_pegawai`, `nik`, `password`, `nidn`, `nidk`, `nitk`, `nama`, `tgl_masuk`, `tgl_keluar`, `sk_1`, `masa_kerja_sk_1`, `sk_2`, `masa_kerja_sk_2`, `id_jabatan`, `no_hp`, `email`, `alamat`, `tempat_lahir`, `tgl_lahir`, `pendidikan_terakhir`, `program_studi`, `status`, `id_bidang`, `time_login_pegawai`, `time_logout_pegawai`, `time_create_pegawai`, `time_update_pegawai`, `kegiatan_yang_diikuti`, `gambar_pegawai`, `jenis_kelamin`, `nik_ktp`, `agama`, `kewarganegaraan`, `rt`, `rw`, `dusun`, `kelurahan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `telpon_rumah`, `nip_pns`, `status_kepegawaian`, `status_keaktifan`, `sk_cpns`, `tanggal_sk_cpns`, `lembaga_pengangkat`, `golongan`, `sumber_gaji`, `nip_niptt`, `jabatan`) VALUES
+(1, '7700015071', '$2y$10$fYbTCNf/4q9O6FWWyI4bpuMC33RfmTgc/Z8cOPCXvMMcinVKXQ.U6', NULL, NULL, NULL, 'Mega Santi Sekartaji, S.KM.', NULL, NULL, NULL, NULL, NULL, NULL, 7, '422412412', 'megasekartaji94@gmail.com', 'Jl Nangka', NULL, NULL, NULL, NULL, '1', 6, '2021-06-21 10:06:25', '2021-06-21 10:06:19', '2021-04-20 10:43:05', '2021-06-21 07:57:09', NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS'),
+(5, '3242e', '$2y$10$TpcOl.CxeO65CB/0XHMM8ekcHrtXDr5BB.6KRc7/zoJrSEHZVN7he', NULL, NULL, NULL, 'superadmin', NULL, NULL, NULL, NULL, NULL, NULL, 7, '', 'superadmin@gmail.com', '', NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, '2021-06-21 07:41:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS'),
+(6, '2343', '$2y$10$Gw9qi7YBSyzWtQmW37TiRuro8jYuxz8LmX/zGmaatppDLZ8jDKNie', NULL, NULL, NULL, 'sfsd', NULL, NULL, NULL, NULL, NULL, NULL, 7, '', 'admin@gmail.com', 'dfssd', NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, '2021-06-21 07:42:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Non PNS');
 
 -- --------------------------------------------------------
 
@@ -401,6 +467,33 @@ CREATE TABLE `tbl_perusahaan` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_perusahaan`
+--
+
+INSERT INTO `tbl_perusahaan` (`id_perusahaan`, `nama`, `no_siup`, `file_siup`, `no_npwp`, `file_npwp`, `alamat`, `no_telpon`, `email`, `nama_pic`, `no_telpon_pic`, `email_pic`, `status`) VALUES
+(1, 'Perorangan', '-', NULL, '-', NULL, '-', '-', '-', '-', '-', '-', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_profil`
+--
+
+CREATE TABLE `tbl_profil` (
+  `id_profil` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `gambar_profil` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_profil`
+--
+
+INSERT INTO `tbl_profil` (`id_profil`, `nama`, `content`, `gambar_profil`) VALUES
+(1, 'OMBAK PERIKANAN', 'Banten', 'logo_banten.png');
+
 -- --------------------------------------------------------
 
 --
@@ -412,6 +505,17 @@ CREATE TABLE `tbl_provinsi` (
   `nama_provinsi` varchar(255) DEFAULT NULL,
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_provinsi`
+--
+
+INSERT INTO `tbl_provinsi` (`id_provinsi`, `nama_provinsi`, `status`) VALUES
+(1, 'Banten', '1'),
+(2, 'Lampung', '1'),
+(3, 'Jawa Barat', '1'),
+(4, 'Jawa Tengah', '1'),
+(5, 'Jawa Timur', '1');
 
 -- --------------------------------------------------------
 
@@ -427,6 +531,16 @@ CREATE TABLE `tbl_satuan` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_satuan`
+--
+
+INSERT INTO `tbl_satuan` (`id_satuan`, `nama_satuan`, `satuan`, `deskripsi`, `status`) VALUES
+(11, 'per sekali masuk', 'M', 'Pehitungan setiap kali memasuki Pelabuhan', '1'),
+(12, 'per kendaraan', 'K', 'Perhitungan sesuai dengan jenis kendaraan yang digunakan', '1'),
+(13, 'per sekali bongkar', 'B', 'Perhitungan dilakukan pada setiap kali melakukan bongkar', '1'),
+(14, 'per bulan', 'b', '', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -439,6 +553,14 @@ CREATE TABLE `tbl_tipe_kapal` (
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_tipe_kapal`
+--
+
+INSERT INTO `tbl_tipe_kapal` (`id_tipe_kapal`, `nama_tipe_kapal`, `status`) VALUES
+(1, 'Kapal', '1'),
+(2, 'Kapal Andon', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -450,6 +572,15 @@ CREATE TABLE `tbl_wpp` (
   `nama_wpp` varchar(255) DEFAULT NULL,
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_wpp`
+--
+
+INSERT INTO `tbl_wpp` (`id_wpp`, `nama_wpp`, `status`) VALUES
+(1, 'WPP-RI 712', '1'),
+(3, 'WPP-RI 573', '1'),
+(4, 'WPP-RI 572', '1');
 
 --
 -- Indexes for dumped tables
@@ -558,6 +689,12 @@ ALTER TABLE `tbl_perusahaan`
   ADD PRIMARY KEY (`id_perusahaan`);
 
 --
+-- Indexes for table `tbl_profil`
+--
+ALTER TABLE `tbl_profil`
+  ADD PRIMARY KEY (`id_profil`);
+
+--
 -- Indexes for table `tbl_provinsi`
 --
 ALTER TABLE `tbl_provinsi`
@@ -589,19 +726,19 @@ ALTER TABLE `tbl_wpp`
 -- AUTO_INCREMENT for table `tbl_alat_tangkap_kapal`
 --
 ALTER TABLE `tbl_alat_tangkap_kapal`
-  MODIFY `id_alat_tangkap_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alat_tangkap_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_bendera_kapal`
 --
 ALTER TABLE `tbl_bendera_kapal`
-  MODIFY `id_bendera_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bendera_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_daerah_operasional_penangkapan_ikan`
 --
 ALTER TABLE `tbl_daerah_operasional_penangkapan_ikan`
-  MODIFY `id_daerah_operasional_penangkapan_ikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_daerah_operasional_penangkapan_ikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_dermaga`
@@ -637,19 +774,19 @@ ALTER TABLE `tbl_jenis_ikan`
 -- AUTO_INCREMENT for table `tbl_jenis_kapal`
 --
 ALTER TABLE `tbl_jenis_kapal`
-  MODIFY `id_jenis_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_layanan`
 --
 ALTER TABLE `tbl_jenis_layanan`
-  MODIFY `id_jenis_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_jenis_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_kapal`
 --
 ALTER TABLE `tbl_kapal`
-  MODIFY `id_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_karyawan`
@@ -661,13 +798,13 @@ ALTER TABLE `tbl_karyawan`
 -- AUTO_INCREMENT for table `tbl_layanan`
 --
 ALTER TABLE `tbl_layanan`
-  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_pegawai`
 --
 ALTER TABLE `tbl_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengguna_jasa`
@@ -685,31 +822,37 @@ ALTER TABLE `tbl_peralatan`
 -- AUTO_INCREMENT for table `tbl_perusahaan`
 --
 ALTER TABLE `tbl_perusahaan`
-  MODIFY `id_perusahaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_perusahaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_profil`
+--
+ALTER TABLE `tbl_profil`
+  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_provinsi`
 --
 ALTER TABLE `tbl_provinsi`
-  MODIFY `id_provinsi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_provinsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_satuan`
 --
 ALTER TABLE `tbl_satuan`
-  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_tipe_kapal`
 --
 ALTER TABLE `tbl_tipe_kapal`
-  MODIFY `id_tipe_kapal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipe_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_wpp`
 --
 ALTER TABLE `tbl_wpp`
-  MODIFY `id_wpp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_wpp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

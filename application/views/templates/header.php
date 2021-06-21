@@ -36,6 +36,13 @@
 
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
