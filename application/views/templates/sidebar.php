@@ -394,6 +394,23 @@
                            </li>
                        </ul>
                    </li>
+
+                   <li class="nav-item has-treeview">
+                       <a href="#" class="nav-link">
+                       <i class="fas fa-cog"></i>
+                           <p>
+                               Pengaturan
+                           </p>
+                       </a>
+                       <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                               <a href="<?= base_url('pengaturan/user') ?>" class="nav-link">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>Pengguna</p>
+                               </a>
+                           </li>
+                       </ul>
+                   </li>
                    <li class="nav-item">
                        <a href="calendar.html" class="nav-link">
                            <i class="nav-icon far fa-calendar-alt"></i>

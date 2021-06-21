@@ -2,6 +2,16 @@
 
 class Pegawai_model extends CI_model
 {
+    public function get()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_pegawai');
+        $this->db->join('tbl_jabatan', 'tbl_jabatan.id_jabatan=tbl_pegawai.id_jabatan');
+        $this->db->order_by('tbl_pegawai.id_pegawai', 'desc');
+        $result = $this->db->get();
+
+        return $result->result_array();
+    }
     public function getAll()
     {
         $this->db->select('*');
@@ -34,12 +44,12 @@ class Pegawai_model extends CI_model
     public function getID($id)
     {
         $this->db->select('*');
-        $this->db->from('tbl_users');
-        $this->db->where('id_users', $id);
+        $this->db->from('tbl_pegawai');
+        $this->db->where('id_pegawai', $id);
 
         $result = $this->db->get();
 
-        return $result->result();
+        return $result->row_array();
     }
 
     public function Insert($table, $data)
@@ -113,8 +123,8 @@ class Pegawai_model extends CI_model
 
     public function delete($id)
     {
-        $this->db->where('id_users', $id);
-        $this->db->delete('tbl_users');
+        $this->db->where('id_pegawai', $id);
+        $this->db->delete('tbl_pegawai');
 
         if ($this->db->affected_rows() > 0)
             return true;
