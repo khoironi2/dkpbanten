@@ -29,6 +29,7 @@ class Kapal extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'kapal' => $this->Kapal_model->getAll(),
+            'profil' => $this->Profil_model->getAll(),
         ];
 
         $this->load->view('templates/header', $data);
@@ -183,6 +184,7 @@ class Kapal extends CI_Controller
             'kapal' => $this->Kapal_model->getAll(),
             'edit_kapal' => $this->Kapal_model->getid($id),
             'siup' => $this->db->get_where('tbl_kapal', ['id_kapal' => $id])->row_array(),
+            'profil' => $this->Profil_model->getAll()
         ];
         $old_siup = $data['siup']['file_siup'];
         $old_sikpi = $data['siup']['file_sikpi'];

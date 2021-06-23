@@ -28,6 +28,7 @@ class Wpp extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'wpp' => $this->Wpp_model->getAll(),
+            'profil' => $this->Profil_model->getAll(),
         ];
 
         $this->load->view('templates/header', $data);

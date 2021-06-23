@@ -241,7 +241,7 @@
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="forms/advanced.html" class="nav-link">
+                               <a href="<?= base_url('dkp/undang_undang') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Undang-Undang</p>
                                </a>
