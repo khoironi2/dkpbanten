@@ -17,6 +17,7 @@ class Undang_undang_model extends CI_model
         $this->db->select('*,tbl_undang_undang.status as status_di_uud');
         $this->db->from('tbl_undang_undang');
         $this->db->join('tbl_jenis_undang_undang a', 'a.id_jenis_undang_undang=tbl_undang_undang.id_jenis_undang_undang');
+        $this->db->order_by('tbl_undang_undang.id_undang_undang', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

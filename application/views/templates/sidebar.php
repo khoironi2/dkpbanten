@@ -247,19 +247,19 @@
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="forms/editors.html" class="nav-link">
+                               <a href="<?= base_url('dkp/cuaca') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Info Cuaca</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="forms/validation.html" class="nav-link">
+                               <a href="<?= base_url('dkp/info_dpi') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Info Daerah Penangkapan Ikan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="forms/validation.html" class="nav-link">
+                               <a href="<?= base_url('dkp/info_harga_ikan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Info Harga Ikan</p>
                                </a>
