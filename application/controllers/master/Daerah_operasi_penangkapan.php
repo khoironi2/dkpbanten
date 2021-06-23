@@ -29,6 +29,7 @@ class Daerah_operasi_penangkapan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'dop' => $this->Daerah_operasi_penangkapan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -48,7 +49,8 @@ class Daerah_operasi_penangkapan extends CI_Controller
             'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
-            'wpp' => $this->Wpp_model->getAll()
+            'wpp' => $this->Wpp_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -69,7 +71,8 @@ class Daerah_operasi_penangkapan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'wpp' => $this->Wpp_model->getAll(),
-            'edit_dop' => $this->Daerah_operasi_penangkapan_model->getid($id)
+            'edit_dop' => $this->Daerah_operasi_penangkapan_model->getid($id),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);

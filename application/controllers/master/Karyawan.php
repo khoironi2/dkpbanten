@@ -29,6 +29,7 @@ class Karyawan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'karyawan' => $this->Karyawan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -50,6 +51,7 @@ class Karyawan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -71,6 +73,7 @@ class Karyawan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'edit_karyawan' => $this->Karyawan_model->getid($id),
             'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);

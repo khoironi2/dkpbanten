@@ -57,6 +57,7 @@ class Kapal extends CI_Controller
             'provinsi' => $this->Provinsi_model->getAll(),
             'wpp' => $this->Wpp_model->getAll(),
             'jenis_layanan' => $this->Jenis_layanan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->form_validation->set_rules('nama_kapal', 'nama_kapal', 'required');

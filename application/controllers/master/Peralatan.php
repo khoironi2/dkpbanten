@@ -29,6 +29,7 @@ class Peralatan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'peralatan' => $this->Peralatan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -48,6 +49,7 @@ class Peralatan extends CI_Controller
             'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->form_validation->set_rules('nama', 'nama', 'required');
@@ -99,7 +101,8 @@ class Peralatan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'edit_peralatan' => $this->Peralatan_model->getid($id),
-            'alat' => $this->db->get_where('tbl_peralatan', ['id_peralatan' => $id])->row_array()
+            'alat' => $this->db->get_where('tbl_peralatan', ['id_peralatan' => $id])->row_array(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $old_alat = $data['alat']['file_peralatan'];

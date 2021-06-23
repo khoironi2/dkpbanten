@@ -5,7 +5,7 @@
    <aside class="main-sidebar sidebar-dark-info  elevation-4">
        <!-- Brand Logo -->
        <?php foreach ($profil as $data) : ?>
-           <a href="<?php echo base_url('dashboard'); ?>" class="brand-link navbar-cyan">
+           <a href="<?php echo base_url('admin/dashboard'); ?>" class="brand-link navbar-cyan">
                <img src="<?php echo base_url('assets/images/logo/' . $data['gambar_profil']); ?>" alt="<?= $data['gambar_profil'] ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
                <span class="brand-text font-weight-light"><?= $data['nama'] ?></span>
            </a>
@@ -38,7 +38,7 @@
                    </li>
                    <li class="nav-item has-treeview">
                        <a href="#" class="nav-link">
-                           <i class="nav-icon fas fa-copy"></i>
+                           <i class="fas fa-server"></i>
                            <p>
                                Master
                                <i class="fas fa-angle-left right"></i>
@@ -163,7 +163,7 @@
                    </li>
                    <li class="nav-item has-treeview">
                        <a href="#" class="nav-link">
-                           <i class="nav-icon fas fa-chart-pie"></i>
+                           <i class="fas fa-place-of-worship"></i>
                            <p>
                                Kesyahbandaran
                                <i class="right fas fa-angle-left"></i>
@@ -192,7 +192,7 @@
                    </li>
                    <li class="nav-item has-treeview">
                        <a href="#" class="nav-link">
-                           <i class="nav-icon fas fa-tree"></i>
+                           <i class="fab fa-servicestack"></i>
                            <p>
                                Pelayanan
                                <i class="fas fa-angle-left right"></i>
@@ -227,7 +227,7 @@
                    </li>
                    <li class="nav-item has-treeview">
                        <a href="#" class="nav-link">
-                           <i class="nav-icon fas fa-edit"></i>
+                           <i class="fas fa-ship"></i>
                            <p>
                                DKP Banten
                                <i class="fas fa-angle-left right"></i>
@@ -268,7 +268,7 @@
                    </li>
                    <li class="nav-item has-treeview">
                        <a href="#" class="nav-link">
-                           <i class="nav-icon fas fa-table"></i>
+                           <i class="fas fa-book"></i>
                            <p>
                                Laporan
                                <i class="fas fa-angle-left right"></i>
@@ -373,11 +373,10 @@
                        </ul>
                    </li>
                    <li class="nav-item">
-                       <a href="calendar.html" class="nav-link">
-                           <i class="nav-icon far fa-calendar-alt"></i>
+                       <a href="<?php echo base_url('auth/logout') ?>" class="nav-link">
+                           <i class="fas fa-sign-out-alt"></i>
                            <p>
                                Sign Out
-                               <span class="badge badge-info right">2</span>
                            </p>
                        </a>
                    </li>

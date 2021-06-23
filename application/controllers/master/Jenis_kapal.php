@@ -29,6 +29,7 @@ class Jenis_kapal extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_kapal' => $this->Jenis_kapal_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -50,6 +51,7 @@ class Jenis_kapal extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_kapal' => $this->Jenis_kapal_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -72,6 +74,7 @@ class Jenis_kapal extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_kapal' => $this->Jenis_kapal_model->getAll(),
             'edit_jenis_kapal' => $this->Jenis_kapal_model->getid($id),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);

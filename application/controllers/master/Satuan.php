@@ -29,6 +29,7 @@ class Satuan extends CI_Controller
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'satuan' => $this->Satuan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -50,6 +51,7 @@ class Satuan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'satuan' => $this->Satuan_model->getAll(),
             'edit_satuan' => $this->Satuan_model->getid($id),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -70,6 +72,7 @@ class Satuan extends CI_Controller
             'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);

@@ -31,6 +31,7 @@ class Jenis_layanan extends CI_Controller
             'layanan' => $this->Layanan_model->getAll(),
             'satuan' => $this->Satuan_model->getAll(),
             'jenis_layanan' => $this->Jenis_layanan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -52,6 +53,7 @@ class Jenis_layanan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'layanan' => $this->Layanan_model->getAll(),
             'satuan' => $this->Satuan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -75,6 +77,7 @@ class Jenis_layanan extends CI_Controller
             'satuan' => $this->Satuan_model->getAll(),
             'jenis_layanan' => $this->Jenis_layanan_model->getAll(),
             'edit_jenis_layanan' => $this->Jenis_layanan_model->getid($id),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);

@@ -30,6 +30,7 @@ class Harga_ikan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_ikan' => $this->Jenis_ikan_model->getAll(),
             'harga_ikan' => $this->Harga_ikan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -51,6 +52,7 @@ class Harga_ikan extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'jenis_ikan' => $this->Jenis_ikan_model->getAll(),
             'harga_ikan' => $this->Harga_ikan_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
@@ -71,6 +73,7 @@ class Harga_ikan extends CI_Controller
             'jenis_ikan' => $this->Jenis_ikan_model->getAll(),
             'harga_ikan' => $this->Harga_ikan_model->getAll(),
             'edit_harga_ikan' => $this->Harga_ikan_model->getid($id),
+            'profil' => $this->Profil_model->getAll()
         ];
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);

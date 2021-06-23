@@ -30,6 +30,7 @@ class Pengguna_jasa extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
             'pengguna_jasa' => $this->Pengguna_jasa_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->load->view('templates/header', $data);
@@ -51,6 +52,7 @@ class Pengguna_jasa extends CI_Controller
             'jabatan' => $this->Pegawai_model->getAll(),
             'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
             'pengguna_jasa' => $this->Pengguna_jasa_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $this->form_validation->set_rules('nama', 'nama', 'required');
@@ -114,7 +116,8 @@ class Pengguna_jasa extends CI_Controller
             'jabatan_karyawan' => $this->Jabatan_karyawan_model->getAll(),
             'pengguna_jasa' => $this->Pengguna_jasa_model->getAll(),
             'edit_pengguna_jasa' => $this->Pengguna_jasa_model->getid($id),
-            'ktp' => $this->db->get_where('tbl_pengguna_jasa', ['id_pengguna_jasa' => $id])->row_array()
+            'ktp' => $this->db->get_where('tbl_pengguna_jasa', ['id_pengguna_jasa' => $id])->row_array(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         $old_ktp = $data['ktp']['file_ktp'];
