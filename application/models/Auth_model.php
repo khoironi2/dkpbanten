@@ -3,10 +3,10 @@
 class Auth_model extends CI_Model
 {
 
-    public function cek_login($nik)
+    public function cek_login($email)
     {
 
-        $hasil = $this->db->where('nik', $nik)->limit(1)->get('tbl_pegawai');
+        $hasil = $this->db->where('email', $email)->limit(1)->get('tbl_pegawai');
         if ($hasil->num_rows() > 0) {
             return $hasil->row();
         } else {

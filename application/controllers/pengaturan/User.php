@@ -129,6 +129,7 @@ class User extends CI_Controller
                 'jabatan' => $jabatan,
                 'email' => $email,
                 'status' => $status,
+                'gambar_pegawai' => 'download1.png',
                 'id_jabatan' => 7,
                 'password' => $pass,
                 'time_create_pegawai' => date('Y-m-d H:i:s')

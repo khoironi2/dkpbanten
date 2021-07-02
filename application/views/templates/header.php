@@ -1,13 +1,15 @@
 <!-- header -->
 <!DOCTYPE html>
 <html>
+<?php foreach ($profil as $data) : ?>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>OMBAK PERIKANAN | <?= $title; ?></title>
-    <!-- Tell the browser to be responsive to screen width -->
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><?= $data['nama'] ?> | <?= $title; ?></title>
+        <link rel="icon" href="<?php echo base_url('assets/images/logo/' . $data['gambar_profil']); ?>" type="image/gif" sizes="16x16">
+        <!-- Tell the browser to be responsive to screen width -->
+    <?php endforeach ?>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -45,7 +47,7 @@
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.css">
 
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"> -->
-</head>
+    </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">

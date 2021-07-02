@@ -1,11 +1,13 @@
 <!-- footer -->
-<footer class="main-footer navbar-default">
-    <strong>Copyright &copy; 2021 <a href="#">DKP Banten</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b>
-    </div>
-</footer>
+<?php foreach ($profil as $data) : ?>
+    <footer class="main-footer navbar-default">
+        <strong>Copyright &copy; 2021 <a href="#">DKP Banten</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b><?= $data['nama'] ?></b>
+        </div>
+    </footer>
+<?php endforeach ?>
 
 <!-- jQuery -->
 <script src="<?php echo base_url('lte3'); ?>/plugins/jquery/jquery.min.js"></script>

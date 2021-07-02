@@ -11,6 +11,9 @@ class Auth extends CI_Controller
     {
         $data = [
             'title' => 'LOGIN',
+            'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
+            'jabatan' => $this->Pegawai_model->getAll(),
+            'profil' => $this->Profil_model->getAll()
         ];
 
         // $this->load->view('templates/header', $data);
@@ -20,7 +23,7 @@ class Auth extends CI_Controller
 
     public function loginForm()
     {
-        $this->form_validation->set_rules('nik', 'Nik', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -31,9 +34,9 @@ class Auth extends CI_Controller
             redirect('/auth');
         } else {
 
-            $nik = htmlspecialchars($this->input->post('nik'));
+            $email = htmlspecialchars($this->input->post('email'));
             $pass = htmlspecialchars($this->input->post('password'));
-            $cek_login = $this->Auth_model->cek_login($nik);
+            $cek_login = $this->Auth_model->cek_login($email);
 
             if ($cek_login == FALSE) {
                 $this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;">username yang Anda masukan tidak terdaftar.</p>');
@@ -50,7 +53,7 @@ class Auth extends CI_Controller
                     date_default_timezone_set("ASIA/JAKARTA");
                     //$email = $this->session->userdata('email');
                     $data = array('time_login_pegawai' => date('Y-m-d H:i:s'));
-                    $this->Auth_model->logout($data, $nik);
+                    $this->Auth_model->logout($data, $email);
                     redirect('admin/dashboard');
                 } else {
 
