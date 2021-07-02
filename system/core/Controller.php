@@ -104,7 +104,7 @@ class CI_Controller
 	{
 		$this->load->library('session');
 		if ($this->session->userdata('nik') == NULL) {
-			$this->session->set_flashdata('error_login', '<div class="alert alert-danger" role="alert">Silahkan login terlebih dahulu untuk mengakses data.</div>');
+			$this->session->set_flashdata('error_login', '<p class="mb-4" style="font-size: 12px; color:#f25767; text-align:center;"><i class="fas fa-exclamation-triangle"> Silahkan login terlebih dahulu </i> </p>');
 			redirect('auth');
 		}
 	}
