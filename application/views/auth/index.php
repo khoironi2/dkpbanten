@@ -21,19 +21,20 @@
         <div class="login-box">
             <div class="login-logo">
                 <img src="<?php echo base_url('assets/images/logo/' . $data['gambar_profil']); ?>" height="40">
-                <?= $data['nama'] ?>
+
+                <b><?= $data['nama'] ?></b>
             </div>
             <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">
-                    <p class="login-box-msg">Silahkan lakukan login terlebih dahulu</p>
+                    <p style="font-size: 14px;" class="login-box-msg">Silahkan lakukan login terlebih dahulu</p>
                     <p><?php echo $this->session->flashdata('error_login'); ?></p>
                     <form action="<?= base_url('auth/loginForm') ?>" method="POST">
                         <div class="input-group mb-3">
                             <input type="text" name="email" id="email" class="form-control" placeholder="username">
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
+                                    <span class="fas fa-user-shield"></span>
                                 </div>
                             </div>
                         </div>
