@@ -20,9 +20,8 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <img src="<?php echo base_url('assets/images/logo/' . $data['gambar_profil']); ?>" height="40">
-
-                <b><?= $data['nama'] ?></b>
+                <a href="<?= base_url() ?>"> <img src="<?php echo base_url('assets/images/logo/' . $data['gambar_profil']); ?>" height="40">
+                    <b><?= $data['nama'] ?></b></a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
@@ -31,7 +30,7 @@
                     <p><?php echo $this->session->flashdata('error_login'); ?></p>
                     <form action="<?= base_url('auth/loginForm') ?>" method="POST">
                         <div class="input-group mb-3">
-                            <input type="text" name="email" id="email" class="form-control" placeholder="username">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="username" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user-shield"></span>
@@ -39,7 +38,7 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
