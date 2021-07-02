@@ -183,7 +183,7 @@
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="<?= base_url('kesyahbandaraan/stbl_keberangakatan') ?>" class="nav-link">
+                               <a href="<?= base_url('kesyahbandaraan/stbl_keberangkatan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>STBL Keberangkatan</p>
                                </a>
@@ -206,25 +206,25 @@
                        </a>
                        <ul class="nav nav-treeview">
                            <li class="nav-item">
-                               <a href="UI/general.html" class="nav-link">
+                               <a href="<?= base_url('pelayanan/daftar_antrian') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Daftar Antrian</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="UI/icons.html" class="nav-link">
+                               <a href="<?= base_url('pelayanan/work_order_kapal') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Work Order Kapal</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="UI/buttons.html" class="nav-link">
+                               <a href="<?= base_url('pelayanan/work_order_non_kapal') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Work Order Non Kapal</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="UI/sliders.html" class="nav-link">
+                               <a href="<?= base_url('pelayanan/pembayaran') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Pembayaran</p>
                                </a>
