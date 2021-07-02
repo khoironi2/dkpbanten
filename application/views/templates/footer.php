@@ -221,6 +221,8 @@
 </script>
 
 
+<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script> -->
+
 <!-- Summernote -->
 <script src="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- AdminLTE for demo purposes -->

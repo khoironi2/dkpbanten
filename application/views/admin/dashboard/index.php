@@ -25,101 +25,52 @@
     <!-- <section class="content"> -->
     <div class="container-fluid">
 
-        <!-- Small boxes (Stat box) -->
+
         <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>500.000</h3>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load('current', {
+                    'packages': ['bar']
+                });
+                google.charts.setOnLoadCallback(drawChart);
 
-                        <p>Jumlah Top Up</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-cash"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Year', 'Jumlah Kapal Per Pelabuhan Pangkalan', 'Jumlah Kapal Per Alat Tangkap', 'Jumlah Kapal dengan Izin Aktif'],
+                        ['2017', 1000, 400, 200],
+                        ['2018', 1170, 460, 250],
+                        ['2019', 660, 1120, 300],
+                        ['2020', 1030, 540, 350]
+                    ]);
+
+                    var options = {
+                        chart: {
+                            title: 'Satistik Layanan',
+                            subtitle: '2017 - 2020',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            </script>
+
+            <div id="columnchart_material" style="width: 100%; height:100%; margin: 10px 10px 10px 10px;"></div>
 
 
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>2.300</h3>
-
-                        <p>Jumlah Piutang</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>275</h3>
-
-                        <p>Jumlah Pengguna Kalbu Smart</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>2.030.002</h3>
-
-                        <p>Jumlah Hutang</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
         </div>
-        <!-- /.row -->
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Pendapatan Per Layanan</h3>
-            </div>
-            <div class="box-body table-responsive">
-                <table class="table table-hover">
-                    <tr>
-                        <th>No.</th>
-                        <th>Jenis Penerimaan</th>
-                        <th style="text-align: right">Tahun 2021</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        </section>
 
     </div>
-    <!-- </section> -->
-    <!-- /# end page-wrapper -->
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    </section>
+
+</div>
+<!-- </section> -->
+<!-- /# end page-wrapper -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- /#wrapper -->

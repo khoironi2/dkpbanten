@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/dist/css/adminlte.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"> -->
 </head>
 
 <body class="hold-transition sidebar-mini">

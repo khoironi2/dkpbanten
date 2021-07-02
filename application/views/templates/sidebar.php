@@ -276,79 +276,79 @@
                        </a>
                        <ul class="nav nav-treeview">
                            <li class="nav-item">
-                               <a href="tables/simple.html" class="nav-link">
+                               <a href="<?= base_url('laporan/kapal') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Kapal</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/data.html" class="nav-link">
+                               <a href="<?= base_url('laporan/pengguna_jasa') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Pengguna Jasa</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/karyawan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Karyawan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/perusahaan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Perusahaan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/peralatan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Peralatan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/jenis_layanan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Jenis Layanan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/perubahan_harga') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Perubahan Harga</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/stbl_kedatangan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Rekap STBL Kedatangan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/stbl_keberangkatan') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Rekap STBL Keberangkatan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/rekap_spb') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Rekap SPB</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/produksi') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Produksi</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/muatan_logistik') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Muatan Logistik</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="tables/jsgrid.html" class="nav-link">
+                               <a href="<?= base_url('laporan/bongkar_muat') ?>" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Laporan Bongkar Muat</p>
                                </a>
