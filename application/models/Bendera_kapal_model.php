@@ -17,6 +17,7 @@ class Bendera_kapal_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_bendera_kapal');
+        $this->db->order_by('id_bendera_kapal', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

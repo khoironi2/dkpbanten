@@ -17,6 +17,7 @@ class Tipe_kapal_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_tipe_kapal');
+        $this->db->order_by('id_tipe_kapal', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

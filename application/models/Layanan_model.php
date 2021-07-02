@@ -17,6 +17,7 @@ class Layanan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_layanan');
+        $this->db->order_by('id_layanan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

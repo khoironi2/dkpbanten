@@ -17,6 +17,7 @@ class Cuaca_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_cuaca');
+        $this->db->order_by('id_cuaca', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

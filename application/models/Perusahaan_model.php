@@ -17,6 +17,7 @@ class Perusahaan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_perusahaan');
+        $this->db->order_by('id_perusahaan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

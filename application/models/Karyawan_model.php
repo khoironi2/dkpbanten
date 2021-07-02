@@ -16,7 +16,8 @@ class Karyawan_model extends CI_model
     {
         $this->db->select('*,tbl_karyawan.status as status_di_karyawan');
         $this->db->from('tbl_karyawan');
-        $this->db->join('tbl_jabatan_karyawan a', 'a.id_jabatan_karyawan=tbl_karyawan.id_jabatan_karyawan');
+        $this->db->join('tbl_jabatan_karyawan a', 'a.id_jabatan_karyawan=tbl_karyawan.id_jabatan_karyawan', 'left');
+        $this->db->order_by('tbl_karyawan.id_karyawan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

@@ -25,6 +25,7 @@ class Jenis_layanan_model extends CI_model
         $this->db->from('tbl_jenis_layanan');
         $this->db->join('tbl_layanan', 'tbl_layanan.id_layanan = tbl_jenis_layanan.id_layanan');
         $this->db->join('tbl_satuan', 'tbl_satuan.id_satuan = tbl_jenis_layanan.id_satuan');
+        $this->db->order_by('tbl_jenis_layanan.id_jenis_layanan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

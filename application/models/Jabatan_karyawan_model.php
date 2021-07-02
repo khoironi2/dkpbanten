@@ -17,6 +17,7 @@ class Jabatan_karyawan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_jabatan_karyawan');
+        $this->db->order_by('id_jabatan_karyawan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

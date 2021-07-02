@@ -23,7 +23,9 @@ class Kapal_model extends CI_model
         $this->db->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_kapal.id_perusahaan');
         $this->db->join('tbl_provinsi', 'tbl_provinsi.id_provinsi=tbl_kapal.id_provinsi');
         $this->db->join('tbl_wpp', 'tbl_wpp.id_wpp=tbl_kapal.id_wpp');
+        $this->db->join('tbl_daerah_operasional_penangkapan_ikan', 'tbl_daerah_operasional_penangkapan_ikan.id_daerah_operasional_penangkapan_ikan=tbl_kapal.id_dopi', 'left');
         $this->db->join('tbl_jenis_layanan', 'tbl_jenis_layanan.id_jenis_layanan=tbl_kapal.id_jenis_layanan');
+        $this->db->order_by('tbl_kapal.id_kapal', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();
@@ -39,6 +41,7 @@ class Kapal_model extends CI_model
         $this->db->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_kapal.id_perusahaan');
         $this->db->join('tbl_provinsi', 'tbl_provinsi.id_provinsi=tbl_kapal.id_provinsi');
         $this->db->join('tbl_wpp', 'tbl_wpp.id_wpp=tbl_kapal.id_wpp');
+        $this->db->join('tbl_daerah_operasional_penangkapan_ikan', 'tbl_daerah_operasional_penangkapan_ikan.id_daerah_operasional_penangkapan_ikan=tbl_kapal.id_dopi');
         $this->db->join('tbl_jenis_layanan', 'tbl_jenis_layanan.id_jenis_layanan=tbl_kapal.id_jenis_layanan');
         $this->db->where('tbl_kapal.id_kapal', $id);
         $result = $this->db->get();

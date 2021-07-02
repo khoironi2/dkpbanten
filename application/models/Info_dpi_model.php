@@ -17,6 +17,7 @@ class Info_dpi_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_info_dpi');
+        $this->db->order_by('id_info_dpi', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

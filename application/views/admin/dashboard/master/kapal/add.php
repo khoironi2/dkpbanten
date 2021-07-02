@@ -227,8 +227,12 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="dpi">DPI <span class="mandatory">*</span></label>
-                                                    <input type="text" class="form-control" name="dpi" id="dpi" value="" maxlength="255" readonly />
+                                                    <label for="wpp">DPI <span class="mandatory">*</span></label>
+                                                    <select name="id_dopi" id="id_dopi" class="form-control select2">
+                                                        <?php foreach ($dop as $data) : ?>
+                                                            <option value="<?= $data['id_daerah_operasional_penangkapan_ikan'] ?>"><?= $data['dpi'] ?></option>
+                                                        <?php endforeach ?>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pelabuhanpangkalan">Pelabuhan Pangkalan <span class="mandatory">*</span></label>

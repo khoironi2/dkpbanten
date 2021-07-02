@@ -16,7 +16,8 @@ class Harga_ikan_model extends CI_model
     {
         $this->db->select('*,tbl_harga_ikan.status as status_di_dop');
         $this->db->from('tbl_harga_ikan');
-        $this->db->join('tbl_jenis_ikan a', 'a.id_jenis_ikan=tbl_harga_ikan.id_jenis_ikan');
+        $this->db->join('tbl_jenis_ikan a', 'a.id_jenis_ikan=tbl_harga_ikan.id_jenis_ikan', 'left');
+        $this->db->order_by('tbl_harga_ikan.id_harga_ikan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

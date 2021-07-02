@@ -16,7 +16,8 @@ class Pengguna_jasa_model extends CI_model
     {
         $this->db->select('*,tbl_pengguna_jasa.status as status_di_pengguna_jasa ');
         $this->db->from('tbl_pengguna_jasa');
-        $this->db->join('tbl_jabatan_karyawan a', 'a.id_jabatan_karyawan=tbl_pengguna_jasa.id_jabatan_karyawan');
+        $this->db->join('tbl_jabatan_karyawan a', 'a.id_jabatan_karyawan=tbl_pengguna_jasa.id_jabatan_karyawan', 'left');
+        $this->db->order_by('tbl_pengguna_jasa.id_pengguna_jasa', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

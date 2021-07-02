@@ -17,6 +17,7 @@ class Info_harga_ikan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_info_harga_ikan');
+        $this->db->order_by('id_info_harga_ikan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

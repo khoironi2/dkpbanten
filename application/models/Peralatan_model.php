@@ -17,6 +17,7 @@ class Peralatan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_peralatan');
+        $this->db->order_by('id_peralatan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

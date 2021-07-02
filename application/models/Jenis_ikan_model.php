@@ -17,6 +17,7 @@ class Jenis_ikan_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_jenis_ikan');
+        $this->db->order_by('id_jenis_ikan', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

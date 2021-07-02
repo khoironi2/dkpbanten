@@ -57,7 +57,8 @@ class Kapal extends CI_Controller
             'provinsi' => $this->Provinsi_model->getAll(),
             'wpp' => $this->Wpp_model->getAll(),
             'jenis_layanan' => $this->Jenis_layanan_model->getAll(),
-            'profil' => $this->Profil_model->getAll()
+            'profil' => $this->Profil_model->getAll(),
+            'dop' => $this->Daerah_operasi_penangkapan_model->getAll(),
         ];
 
         $this->form_validation->set_rules('nama_kapal', 'nama_kapal', 'required');
@@ -99,7 +100,7 @@ class Kapal extends CI_Controller
                 'gross_akte_kapal' => $this->input->post('gross_akte_kapal'),
                 'id_provinsi' => $this->input->post('id_provinsi'),
                 'id_wpp' => $this->input->post('id_wpp'),
-                'dpi' => $this->input->post('dpi'),
+                'id_dopi' => $this->input->post('id_dopi'),
                 'pelabuhan_pangkalan' => $this->input->post('pelabuhan_pangkalan'),
                 'tanggal_sipi' => $this->input->post('tanggal_sipi'),
                 'tanggal_akhir_sipi' => $this->input->post('tanggal_akhir_sipi'),
@@ -185,7 +186,8 @@ class Kapal extends CI_Controller
             'kapal' => $this->Kapal_model->getAll(),
             'edit_kapal' => $this->Kapal_model->getid($id),
             'siup' => $this->db->get_where('tbl_kapal', ['id_kapal' => $id])->row_array(),
-            'profil' => $this->Profil_model->getAll()
+            'profil' => $this->Profil_model->getAll(),
+            'dop' => $this->Daerah_operasi_penangkapan_model->getAll()
         ];
         $old_siup = $data['siup']['file_siup'];
         $old_sikpi = $data['siup']['file_sikpi'];
@@ -235,7 +237,7 @@ class Kapal extends CI_Controller
                 'gross_akte_kapal' => $this->input->post('gross_akte_kapal'),
                 'id_provinsi' => $this->input->post('id_provinsi'),
                 'id_wpp' => $this->input->post('id_wpp'),
-                'dpi' => $this->input->post('dpi'),
+                'id_dopi' => $this->input->post('id_dopi'),
                 'pelabuhan_pangkalan' => $this->input->post('pelabuhan_pangkalan'),
                 'tanggal_sipi' => $this->input->post('tanggal_sipi'),
                 'tanggal_akhir_sipi' => $this->input->post('tanggal_akhir_sipi'),

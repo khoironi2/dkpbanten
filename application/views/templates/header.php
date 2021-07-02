@@ -42,7 +42,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/dist/css/adminlte.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url('lte3'); ?>/plugins/summernote/summernote-bs4.min.css">
 

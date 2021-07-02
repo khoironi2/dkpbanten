@@ -17,6 +17,7 @@ class Jenis_undang_undang_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_jenis_undang_undang');
+        $this->db->order_by('id_jenis_undang_undang', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

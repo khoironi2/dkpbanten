@@ -17,6 +17,7 @@ class Dermaga_model extends CI_model
         $this->db->select('*
         ');
         $this->db->from('tbl_dermaga');
+        $this->db->order_by('id_dermaga', 'desc');
         $result = $this->db->get();
 
         return $result->result_array();

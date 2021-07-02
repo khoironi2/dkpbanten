@@ -43,7 +43,7 @@
                             <th>PIC</th>
                             <th>Telepon PIC</th>
                             <th>Status</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

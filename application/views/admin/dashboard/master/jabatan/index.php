@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 0;
+                        <?php $no = 1;
                         foreach ($jabatan_karyawan as $data) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
