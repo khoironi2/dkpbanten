@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href=""><?= $parent; ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('master/tipe_kapal') ?>"><?= $parent; ?></a></li>
                         <li class="breadcrumb-item active"><?= $child; ?></li>
                     </ol>
                 </div>
@@ -38,7 +38,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Status</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

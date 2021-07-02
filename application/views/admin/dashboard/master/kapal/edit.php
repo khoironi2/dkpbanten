@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href=""><?= $parent; ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('master/kapal') ?>"><?= $parent; ?></a></li>
                         <li class="breadcrumb-item active"><?= $child; ?></li>
                         <li class="breadcrumb-item active"><?= $newchild; ?></li>
                     </ol>

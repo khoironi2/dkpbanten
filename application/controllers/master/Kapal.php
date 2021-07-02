@@ -46,7 +46,7 @@ class Kapal extends CI_Controller
             'title' => 'KAPAL ',
             'parent' => 'Master ',
             'child' => 'Kapal ',
-            'newchild' => 'Perbarui ',
+            'newchild' => 'Tambah ',
             'users' => $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array(),
             'jabatan' => $this->Pegawai_model->getAll(),
             'tipe_kapal' => $this->Tipe_kapal_model->getAll(),

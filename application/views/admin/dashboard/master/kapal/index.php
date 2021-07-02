@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href=""><?= $parent; ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo $this->uri->segment(2); ?>"><?= $parent; ?></a></li>
                         <li class="breadcrumb-item active"><?= $child; ?></li>
                     </ol>
                 </div>

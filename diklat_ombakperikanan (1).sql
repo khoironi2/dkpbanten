@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 21, 2021 at 10:47 AM
+-- Generation Time: Jul 02, 2021 at 02:17 PM
 -- Server version: 5.7.24-log
--- PHP Version: 7.0.0
+-- PHP Version: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,6 +73,25 @@ INSERT INTO `tbl_bendera_kapal` (`id_bendera_kapal`, `nama_bendera_kapal`, `stat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_cuaca`
+--
+
+CREATE TABLE `tbl_cuaca` (
+  `id_cuaca` int(11) NOT NULL,
+  `nama_cuaca` varchar(255) DEFAULT NULL,
+  `link_cuaca` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_cuaca`
+--
+
+INSERT INTO `tbl_cuaca` (`id_cuaca`, `nama_cuaca`, `link_cuaca`) VALUES
+(1, 'Tinggi Gelombang', 'http://peta-maritim.bmkg.go.id/ofs-static/');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_daerah_operasional_penangkapan_ikan`
 --
 
@@ -88,7 +107,6 @@ CREATE TABLE `tbl_daerah_operasional_penangkapan_ikan` (
 --
 
 INSERT INTO `tbl_daerah_operasional_penangkapan_ikan` (`id_daerah_operasional_penangkapan_ikan`, `id_wpp`, `dpi`, `status`) VALUES
-(3, 2, 'Cukimai', '1'),
 (4, 1, 'INDONESIA', '1'),
 (5, 3, 'INDONESIA', '1'),
 (7, 4, 'INDONESIA', '1');
@@ -119,6 +137,37 @@ CREATE TABLE `tbl_harga_ikan` (
   `harga` varchar(255) DEFAULT NULL,
   `status` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_info_dpi`
+--
+
+CREATE TABLE `tbl_info_dpi` (
+  `id_info_dpi` int(11) NOT NULL,
+  `nama_info_dpi` varchar(255) DEFAULT NULL,
+  `link_info_dpi` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_info_harga_ikan`
+--
+
+CREATE TABLE `tbl_info_harga_ikan` (
+  `id_info_harga_ikan` int(11) NOT NULL,
+  `nama_harga_ikan` varchar(255) DEFAULT NULL,
+  `link_harga_ikan` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_info_harga_ikan`
+--
+
+INSERT INTO `tbl_info_harga_ikan` (`id_info_harga_ikan`, `nama_harga_ikan`, `link_harga_ikan`) VALUES
+(1, 'xsa', 's');
 
 -- --------------------------------------------------------
 
@@ -229,6 +278,29 @@ INSERT INTO `tbl_jenis_layanan` (`id_jenis_layanan`, `id_layanan`, `nama_jenis_l
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_jenis_undang_undang`
+--
+
+CREATE TABLE `tbl_jenis_undang_undang` (
+  `id_jenis_undang_undang` int(11) NOT NULL,
+  `jenis_undang_undang` varchar(255) DEFAULT NULL,
+  `status` enum('0','1') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_jenis_undang_undang`
+--
+
+INSERT INTO `tbl_jenis_undang_undang` (`id_jenis_undang_undang`, `jenis_undang_undang`, `status`) VALUES
+(6, 'Undang-Undang', '1'),
+(7, 'Peraturan Menteri', '1'),
+(8, 'Peraturan Daerah', '1'),
+(9, 'Peraturan Gubernur', '1'),
+(10, 'Peraturan Bupati', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_kapal`
 --
 
@@ -270,7 +342,7 @@ CREATE TABLE `tbl_kapal` (
   `file_gross_akte_kapal` varchar(255) DEFAULT NULL,
   `id_provinsi` int(11) DEFAULT NULL,
   `id_wpp` int(11) DEFAULT NULL,
-  `dpi` varchar(255) DEFAULT NULL,
+  `id_dopi` int(11) DEFAULT NULL,
   `pelabuhan_pangkalan` varchar(255) DEFAULT NULL,
   `tanggal_sipi` date DEFAULT NULL,
   `tanggal_akhir_sipi` date DEFAULT NULL,
@@ -283,8 +355,9 @@ CREATE TABLE `tbl_kapal` (
 -- Dumping data for table `tbl_kapal`
 --
 
-INSERT INTO `tbl_kapal` (`id_kapal`, `nama_kapal`, `id_tipe_kapal`, `id_jenis_kapal`, `id_bendera_kapal`, `pemilik`, `nahkoda`, `jumlah_abk`, `merk_mesin_utama`, `merk_mesin_tambahan`, `pk_ps_hp`, `gt`, `panjang_kapal`, `lebar_kapal`, `draft_kapal`, `tanda_selar`, `id_alat_tangkap_kapal`, `id_perusahaan`, `alamat`, `siup`, `file_siup`, `sikpi`, `file_sikpi`, `sipi`, `file_sipi`, `sipi_andon`, `file_sipi_andon`, `surat_kelayakan`, `file_surat_kelayakan`, `pas_kecil_pas_besar_surat_laut`, `file_pas_kecil_pas_besar_surat_laut`, `surat_ukur_kapal`, `file_surat_ukur_kapal`, `gross_akte_kapal`, `file_gross_akte_kapal`, `id_provinsi`, `id_wpp`, `dpi`, `pelabuhan_pangkalan`, `tanggal_sipi`, `tanggal_akhir_sipi`, `pengguna_buat`, `status_sipi`, `id_jenis_layanan`) VALUES
-(1, 'MINA SEJAHTERA 2', 1, 2, 1, 'AAM', '-', '-', 'YAMAHA ', '-', '15 PK', '1', '-', '-', '-', '- ', 2, 1, 'KP. CIBEAS RT 2 RW 1 Desa Sawarna Keamatan Bayah Kab Lebak', '-', NULL, '-', NULL, '-', NULL, '-', NULL, '-', NULL, '45.21.3698.195.00050', NULL, '-', NULL, '-', NULL, 1, 3, '', 'PP Sawarna', '2021-06-01', '2021-06-15', 'Kapal Penangkap Ivan', '2', 3);
+INSERT INTO `tbl_kapal` (`id_kapal`, `nama_kapal`, `id_tipe_kapal`, `id_jenis_kapal`, `id_bendera_kapal`, `pemilik`, `nahkoda`, `jumlah_abk`, `merk_mesin_utama`, `merk_mesin_tambahan`, `pk_ps_hp`, `gt`, `panjang_kapal`, `lebar_kapal`, `draft_kapal`, `tanda_selar`, `id_alat_tangkap_kapal`, `id_perusahaan`, `alamat`, `siup`, `file_siup`, `sikpi`, `file_sikpi`, `sipi`, `file_sipi`, `sipi_andon`, `file_sipi_andon`, `surat_kelayakan`, `file_surat_kelayakan`, `pas_kecil_pas_besar_surat_laut`, `file_pas_kecil_pas_besar_surat_laut`, `surat_ukur_kapal`, `file_surat_ukur_kapal`, `gross_akte_kapal`, `file_gross_akte_kapal`, `id_provinsi`, `id_wpp`, `id_dopi`, `pelabuhan_pangkalan`, `tanggal_sipi`, `tanggal_akhir_sipi`, `pengguna_buat`, `status_sipi`, `id_jenis_layanan`) VALUES
+(1, 'MINA SEJAHTERA 2', 1, 2, 1, 'AAM', '-', '-', 'YAMAHA ', '-', '15 PK', '1', '-', '-', '-', '- ', 2, 1, 'KP. CIBEAS RT 2 RW 1 Desa Sawarna Keamatan Bayah Kab Lebak', '-', NULL, '-', NULL, '-', NULL, '-', NULL, '-', NULL, '45.21.3698.195.00050', NULL, '-', NULL, '-', NULL, 1, 3, NULL, 'PP Sawarna', '2021-06-01', '2021-06-15', 'Kapal Penangkap Ivan', '2', 3),
+(2, 'ANUGRAH JAYAs', 1, 1, 1, 'roni', 'ova', '12', 'as', 'asa', 'w', 'w', 'a', 'a', 'w', 'w', 4, 1, '-', '87600199', NULL, 'sa', NULL, 'saa', NULL, 'www', NULL, 'csacas', NULL, 'csa', NULL, 'csa', NULL, 'csa', NULL, 1, 1, 7, 'csacas', '2021-07-02', '2021-07-10', 'csacas', '1', 4);
 
 -- --------------------------------------------------------
 
@@ -399,9 +472,8 @@ CREATE TABLE `tbl_pegawai` (
 --
 
 INSERT INTO `tbl_pegawai` (`id_pegawai`, `nik`, `password`, `nidn`, `nidk`, `nitk`, `nama`, `tgl_masuk`, `tgl_keluar`, `sk_1`, `masa_kerja_sk_1`, `sk_2`, `masa_kerja_sk_2`, `id_jabatan`, `no_hp`, `email`, `alamat`, `tempat_lahir`, `tgl_lahir`, `pendidikan_terakhir`, `program_studi`, `status`, `id_bidang`, `time_login_pegawai`, `time_logout_pegawai`, `time_create_pegawai`, `time_update_pegawai`, `kegiatan_yang_diikuti`, `gambar_pegawai`, `jenis_kelamin`, `nik_ktp`, `agama`, `kewarganegaraan`, `rt`, `rw`, `dusun`, `kelurahan`, `kabupaten_kota`, `provinsi`, `kode_pos`, `telpon_rumah`, `nip_pns`, `status_kepegawaian`, `status_keaktifan`, `sk_cpns`, `tanggal_sk_cpns`, `lembaga_pengangkat`, `golongan`, `sumber_gaji`, `nip_niptt`, `jabatan`) VALUES
-(1, '7700015071', '$2y$10$fYbTCNf/4q9O6FWWyI4bpuMC33RfmTgc/Z8cOPCXvMMcinVKXQ.U6', NULL, NULL, NULL, 'Mega Santi Sekartaji, S.KM.', NULL, NULL, NULL, NULL, NULL, NULL, 7, '422412412', 'megasekartaji94@gmail.com', 'Jl Nangka', NULL, NULL, NULL, NULL, '1', 6, '2021-06-21 10:06:25', '2021-06-21 10:06:19', '2021-04-20 10:43:05', '2021-06-21 07:57:09', NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS'),
-(5, '3242e', '$2y$10$TpcOl.CxeO65CB/0XHMM8ekcHrtXDr5BB.6KRc7/zoJrSEHZVN7he', NULL, NULL, NULL, 'superadmin', NULL, NULL, NULL, NULL, NULL, NULL, 7, '', 'superadmin@gmail.com', '', NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, '2021-06-21 07:41:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS'),
-(6, '2343', '$2y$10$Gw9qi7YBSyzWtQmW37TiRuro8jYuxz8LmX/zGmaatppDLZ8jDKNie', NULL, NULL, NULL, 'sfsd', NULL, NULL, NULL, NULL, NULL, NULL, 7, '', 'admin@gmail.com', 'dfssd', NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, '2021-06-21 07:42:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Non PNS');
+(1, '7700015071', '$2y$10$dYrK4uPeDfJpZc8t7lolbOfJViTkYWgPnYqzladUbt4owczW7qOki', NULL, NULL, NULL, 'Admin DKP BANTEN', NULL, NULL, NULL, NULL, NULL, NULL, 7, '422412412', 'dkpprovbanten@gmail.com', 'Jl Nangka', NULL, NULL, NULL, NULL, '1', 6, '2021-07-02 11:31:34', '2021-07-02 11:53:06', '2021-04-20 10:43:05', '2021-07-02 11:52:20', NULL, 'download1.png', 'perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS'),
+(8, '12', '$2y$10$KX1sqhQl57UKC7Qnq7s1turWmDG.XWOtB20up64iiaqs8ZQuUcd6m', NULL, NULL, NULL, 'aiman', NULL, NULL, NULL, NULL, NULL, NULL, 7, '1', 'admin@gmail.com', 'a', NULL, NULL, NULL, NULL, '1', NULL, NULL, '2021-07-02 12:53:50', '2021-07-02 11:38:21', NULL, NULL, 'download1.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'PNS');
 
 -- --------------------------------------------------------
 
@@ -564,6 +636,31 @@ INSERT INTO `tbl_tipe_kapal` (`id_tipe_kapal`, `nama_tipe_kapal`, `status`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_undang_undang`
+--
+
+CREATE TABLE `tbl_undang_undang` (
+  `id_undang_undang` int(11) NOT NULL,
+  `nomor` varchar(255) DEFAULT NULL,
+  `tahun` varchar(255) DEFAULT NULL,
+  `id_jenis_undang_undang` int(11) DEFAULT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `deskripsi` varchar(255) DEFAULT NULL,
+  `status` enum('0','1') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_undang_undang`
+--
+
+INSERT INTO `tbl_undang_undang` (`id_undang_undang`, `nomor`, `tahun`, `id_jenis_undang_undang`, `judul`, `deskripsi`, `status`) VALUES
+(1, '22', '2018', 7, 'BIAYA PENGELOLAAN GEDUNG NEGARA', '<p>ok</p>', '1'),
+(2, '23', '2014', 8, 'PEMERINTAHAN DAERAH', '<p>PEMERINTAHAN DAERAH<br></p>', '1'),
+(4, '11', '2022', 10, 'contoh', '<p>ok</p>', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_wpp`
 --
 
@@ -599,6 +696,12 @@ ALTER TABLE `tbl_bendera_kapal`
   ADD PRIMARY KEY (`id_bendera_kapal`);
 
 --
+-- Indexes for table `tbl_cuaca`
+--
+ALTER TABLE `tbl_cuaca`
+  ADD PRIMARY KEY (`id_cuaca`);
+
+--
 -- Indexes for table `tbl_daerah_operasional_penangkapan_ikan`
 --
 ALTER TABLE `tbl_daerah_operasional_penangkapan_ikan`
@@ -615,6 +718,18 @@ ALTER TABLE `tbl_dermaga`
 --
 ALTER TABLE `tbl_harga_ikan`
   ADD PRIMARY KEY (`id_harga_ikan`);
+
+--
+-- Indexes for table `tbl_info_dpi`
+--
+ALTER TABLE `tbl_info_dpi`
+  ADD PRIMARY KEY (`id_info_dpi`);
+
+--
+-- Indexes for table `tbl_info_harga_ikan`
+--
+ALTER TABLE `tbl_info_harga_ikan`
+  ADD PRIMARY KEY (`id_info_harga_ikan`);
 
 --
 -- Indexes for table `tbl_jabatan`
@@ -645,6 +760,12 @@ ALTER TABLE `tbl_jenis_kapal`
 --
 ALTER TABLE `tbl_jenis_layanan`
   ADD PRIMARY KEY (`id_jenis_layanan`);
+
+--
+-- Indexes for table `tbl_jenis_undang_undang`
+--
+ALTER TABLE `tbl_jenis_undang_undang`
+  ADD PRIMARY KEY (`id_jenis_undang_undang`);
 
 --
 -- Indexes for table `tbl_kapal`
@@ -713,6 +834,12 @@ ALTER TABLE `tbl_tipe_kapal`
   ADD PRIMARY KEY (`id_tipe_kapal`);
 
 --
+-- Indexes for table `tbl_undang_undang`
+--
+ALTER TABLE `tbl_undang_undang`
+  ADD PRIMARY KEY (`id_undang_undang`);
+
+--
 -- Indexes for table `tbl_wpp`
 --
 ALTER TABLE `tbl_wpp`
@@ -735,10 +862,16 @@ ALTER TABLE `tbl_bendera_kapal`
   MODIFY `id_bendera_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_cuaca`
+--
+ALTER TABLE `tbl_cuaca`
+  MODIFY `id_cuaca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_daerah_operasional_penangkapan_ikan`
 --
 ALTER TABLE `tbl_daerah_operasional_penangkapan_ikan`
-  MODIFY `id_daerah_operasional_penangkapan_ikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_daerah_operasional_penangkapan_ikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_dermaga`
@@ -753,6 +886,18 @@ ALTER TABLE `tbl_harga_ikan`
   MODIFY `id_harga_ikan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_info_dpi`
+--
+ALTER TABLE `tbl_info_dpi`
+  MODIFY `id_info_dpi` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_info_harga_ikan`
+--
+ALTER TABLE `tbl_info_harga_ikan`
+  MODIFY `id_info_harga_ikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_jabatan`
 --
 ALTER TABLE `tbl_jabatan`
@@ -762,7 +907,7 @@ ALTER TABLE `tbl_jabatan`
 -- AUTO_INCREMENT for table `tbl_jabatan_karyawan`
 --
 ALTER TABLE `tbl_jabatan_karyawan`
-  MODIFY `id_jabatan_karyawan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jabatan_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_ikan`
@@ -783,10 +928,16 @@ ALTER TABLE `tbl_jenis_layanan`
   MODIFY `id_jenis_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `tbl_jenis_undang_undang`
+--
+ALTER TABLE `tbl_jenis_undang_undang`
+  MODIFY `id_jenis_undang_undang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `tbl_kapal`
 --
 ALTER TABLE `tbl_kapal`
-  MODIFY `id_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_karyawan`
@@ -804,7 +955,7 @@ ALTER TABLE `tbl_layanan`
 -- AUTO_INCREMENT for table `tbl_pegawai`
 --
 ALTER TABLE `tbl_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengguna_jasa`
@@ -847,6 +998,12 @@ ALTER TABLE `tbl_satuan`
 --
 ALTER TABLE `tbl_tipe_kapal`
   MODIFY `id_tipe_kapal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_undang_undang`
+--
+ALTER TABLE `tbl_undang_undang`
+  MODIFY `id_undang_undang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_wpp`

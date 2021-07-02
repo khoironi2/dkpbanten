@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo $this->uri->segment(1); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo $this->uri->segment(2); ?>">Home</a></li>
                         <li class="breadcrumb-item active"><?php echo ucfirst($this->uri->segment(1)); ?></li>
                     </ol>
                 </div>
